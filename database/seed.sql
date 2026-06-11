@@ -1,0 +1,3 @@
+-- UniApply SA starter seed file.
+-- Add non-secret development seed data here when real tables exist.
+-- Do not insert passwords or authentication secrets into Render PostgreSQL.

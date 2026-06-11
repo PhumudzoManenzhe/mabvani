@@ -1,0 +1,7 @@
+/*
+  Public page starter styles for landing, login, register, and about pages.
+*/
+.public-page .hero-section,
+.public-page .placeholder-section {
+  padding-block: var(--space-8);
+}

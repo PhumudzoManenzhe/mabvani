@@ -1,0 +1,31 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/about", "destination": "/pages/public/about.html" },
+    { "source": "/login", "destination": "/pages/public/login.html" },
+    { "source": "/register", "destination": "/pages/public/register.html" },
+    { "source": "/student/dashboard", "destination": "/pages/student/dashboard.html" },
+    { "source": "/student/profile", "destination": "/pages/student/profile.html" },
+    { "source": "/student/results", "destination": "/pages/student/results.html" },
+    { "source": "/student/documents", "destination": "/pages/student/documents.html" },
+    { "source": "/student/universities", "destination": "/pages/student/universities.html" },
+    { "source": "/student/university-details", "destination": "/pages/student/university-details.html" },
+    { "source": "/student/programmes", "destination": "/pages/student/programmes.html" },
+    { "source": "/student/recommendations", "destination": "/pages/student/recommendations.html" },
+    { "source": "/student/cart", "destination": "/pages/student/cart.html" },
+    { "source": "/student/checkout", "destination": "/pages/student/checkout.html" },
+    { "source": "/student/applications", "destination": "/pages/student/applications.html" },
+    { "source": "/student/application-details", "destination": "/pages/student/application-details.html" },
+    { "source": "/student/notifications", "destination": "/pages/student/notifications.html" },
+    { "source": "/admin/dashboard", "destination": "/pages/admin/dashboard.html" },
+    { "source": "/admin/applications", "destination": "/pages/admin/applications.html" },
+    { "source": "/admin/application-details", "destination": "/pages/admin/application-details.html" },
+    { "source": "/admin/students", "destination": "/pages/admin/students.html" },
+    { "source": "/admin/universities", "destination": "/pages/admin/universities.html" },
+    { "source": "/admin/programmes", "destination": "/pages/admin/programmes.html" },
+    { "source": "/admin/admission-rules", "destination": "/pages/admin/admission-rules.html" },
+    { "source": "/admin/notifications", "destination": "/pages/admin/notifications.html" }
+  ]
+}

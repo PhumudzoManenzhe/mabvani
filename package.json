@@ -1,0 +1,14 @@
+{
+  "name": "uniapply-sa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Project foundation for the UniApply SA web application.",
+  "scripts": {
+    "dev": "npm --prefix server run dev",
+    "start": "npm --prefix server start",
+    "test": "npm --prefix server test",
+    "test:coverage": "npm --prefix server run test:coverage",
+    "check:syntax": "node scripts/check-js-syntax.js",
+    "dev:client": "node scripts/serve-client.js"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "uniapply-sa-client",
+  "private": true,
+  "type": "module",
+  "description": "Static browser ES module frontend for UniApply SA."
+}

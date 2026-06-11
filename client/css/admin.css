@@ -1,0 +1,8 @@
+/*
+  Admin workspace starter styles. Future operational screens should stay dense,
+  readable, and easy to scan.
+*/
+.admin-page .placeholder-section {
+  border-left: 4px solid var(--color-dark-navy);
+  padding-left: var(--space-6);
+}

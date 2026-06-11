@@ -1,0 +1,16 @@
+-- UniApply SA starter schema.
+-- Render PostgreSQL stores application data.
+-- Supabase Auth stores authentication identities.
+-- Future application user records should link with:
+--   supabase_user_id UUID UNIQUE NOT NULL
+-- Do not store user passwords in Render PostgreSQL.
+-- Full application tables will be added through migrations in later phases.
+--
+-- Likely future users table fields:
+--   id
+--   supabase_user_id
+--   email
+--   role
+--   status
+--   created_at
+--   updated_at

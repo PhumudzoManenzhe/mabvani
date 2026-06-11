@@ -1,0 +1,29 @@
+/*
+  Shared layout helpers for page width, headers, and placeholder sections.
+*/
+.layout-container {
+  width: min(100% - 2rem, var(--max-content-width));
+  margin-inline: auto;
+}
+
+.site-header {
+  background: var(--color-white);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 72px;
+}
+
+.page-shell {
+  padding-block: var(--space-12);
+}
+
+.hero-section,
+.placeholder-section {
+  max-width: 720px;
+}

@@ -1,0 +1,18 @@
+/*
+  Responsive adjustments for small screens and narrow browser windows.
+*/
+@media (max-width: 720px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-block: var(--space-4);
+  }
+
+  .site-nav {
+    align-items: flex-start;
+  }
+
+  .page-shell {
+    padding-block: var(--space-8);
+  }
+}
