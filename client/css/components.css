@@ -1,14 +1,17 @@
 /*
-  Reusable component starter styles. Extend these when real components are
-  implemented.
+  Reusable component styles shared by static pages. These use the design
+  tokens converted from the provided template CSS.
 */
+
+/* Brand link: keeps legacy headers aligned with the template wordmark color. */
 .brand-link {
-  color: var(--color-dark-navy);
+  color: var(--foreground);
   font-size: 1.125rem;
   font-weight: 700;
   text-decoration: none;
 }
 
+/* Site nav: preserves the older simple header layout for pages not yet templated. */
 .site-nav {
   display: flex;
   align-items: center;
@@ -16,12 +19,14 @@
   gap: var(--space-3);
 }
 
+/* Site nav links: uses the template foreground color for readable navigation. */
 .site-nav a {
-  color: var(--color-main-text);
+  color: var(--foreground);
   font-weight: 600;
   text-decoration: none;
 }
 
+/* Button base: creates the shared touch-friendly button shape. */
 .button {
   display: inline-flex;
   align-items: center;
@@ -33,27 +38,36 @@
   text-decoration: none;
 }
 
+/* Primary button: applies the deep navy template primary color. */
 .button-primary {
-  background: var(--color-primary-blue);
-  color: var(--color-white);
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
+/* Secondary button: applies the template card surface and border. */
 .button-secondary {
-  background: var(--color-white);
-  color: var(--color-dark-navy);
-  border: 1px solid #cbd5e1;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
 }
 
+/* Button hover: gives static links button-like feedback. */
+.button:hover {
+  filter: brightness(0.97);
+}
+
+/* Hero actions: lets CTA groups wrap cleanly. */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
 }
 
+/* Eyebrow text: uses the template accent color for section labels. */
 .eyebrow {
-  color: var(--color-muted-text);
+  color: var(--accent);
   font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }

@@ -1,12 +1,19 @@
 /**
  * Browser module for the Documents page.
- * Page behaviour will be added during feature implementation.
+ * Upload and document list behaviour is intentionally left for implementation.
  */
 import { setCurrentPage } from "../utils/dom.js";
 
 export const page = Object.freeze({
   id: "documents",
-  status: "placeholder",
+  status: "template-static",
 });
 
 setCurrentPage(page.id);
+
+// TODO: Read [data-document-upload-form] and upload the selected file.
+// TODO: Validate file size, file type, and selected document type before upload.
+// TODO: Load the student's saved documents and render rows from [data-document-row].
+// TODO: Wire [data-preview-document] to signed URL preview generation.
+// TODO: Wire [data-delete-document] to storage and database deletion.
+// TODO: Wire [data-sign-out] to the auth/session service.

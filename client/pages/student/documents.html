@@ -4,35 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Documents | UniApply SA</title>
-    <link rel="stylesheet" href="../../css/variables.css">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="../../css/layouts.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <link rel="stylesheet" href="../../css/student.css">
-    <link rel="stylesheet" href="../../css/responsive.css">
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/layouts.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/student.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
 </head>
 <body class="student-page">
-  <header class="site-header">
-    <div class="layout-container header-inner">
-      <a class="brand-link" href="../../index.html">UniApply SA</a>
-
-      <nav class="site-nav" aria-label="Student navigation">
-        <a href="../../index.html">Home</a>
-        <a href="../../pages/student/dashboard.html">Dashboard</a>
-        <a href="../../pages/student/profile.html">Profile</a>
-        <a href="../../pages/student/applications.html">Applications</a>
-      </nav>
-    </div>
+  <header class="student-mobile-header">
+    <a class="student-logo" href="../../index.html"><span class="student-logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path><path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path></svg></span><span>UniApply<span class="student-logo-dot">.</span>SA</span></a>
+    <button class="student-menu-button" type="button" aria-label="Open navigation" data-mobile-menu><svg viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg></button>
   </header>
 
-  <main class="layout-container page-shell">
-    <section class="placeholder-section" aria-labelledby="page-title">
-      <p class="eyebrow">Student workspace</p>
-      <h1 id="page-title">Documents</h1>
-      <p>Document uploads will be implemented in a later phase.</p>
-    </section>
-  </main>
+  <div class="student-shell">
+    <aside class="student-sidebar" aria-label="Student navigation">
+      <a class="student-logo" href="../../index.html"><span class="student-logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path><path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path></svg></span><span>UniApply<span class="student-logo-dot">.</span>SA</span></a>
+      <nav class="student-nav" aria-label="Primary">
+        <a class="student-nav-link" href="dashboard.html"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"></rect><rect x="14" y="4" width="6" height="6" rx="1"></rect><rect x="4" y="14" width="6" height="6" rx="1"></rect><rect x="14" y="14" width="6" height="6" rx="1"></rect></svg>Dashboard</a>
+        <a class="student-nav-link" href="universities.html"><svg viewBox="0 0 24 24"><path d="M4 20h16"></path><path d="M6 20V9h5v11"></path><path d="M13 20V5h5v15"></path></svg>Universities</a>
+        <a class="student-nav-link" href="applications.html"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="1.5"></rect><path d="M9 10h6"></path><path d="M9 14h4"></path></svg>Applications</a>
+        <a class="student-nav-link is-active" href="documents.html" aria-current="page"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l3 3V20H7V3.5Z"></path><path d="M14 3.5V7h3.5"></path></svg>Documents</a>
+        <a class="student-nav-link" href="profile.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.25"></circle><path d="M5.75 20c.6-3.25 2.7-5 6.25-5s5.65 1.75 6.25 5"></path></svg>Profile</a>
+        <a class="student-nav-link" href="results.html"><svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0-9-9"></path><path d="M12 12 17 7"></path></svg>APS Calculator</a>
+      </nav>
+      <button class="student-button student-signout" type="button" data-sign-out>Sign out</button>
+    </aside>
+
+    <main class="student-main" aria-labelledby="documents-title">
+      <header class="student-page-header">
+        <div>
+          <h1 id="documents-title">Documents</h1>
+          <p class="student-subtitle">Upload each document once. PDF, PNG, or JPG. Max 20MB.</p>
+        </div>
+      </header>
+
+      <section class="student-card student-card-body" aria-labelledby="upload-title">
+        <h2 id="upload-title" class="student-panel-title">Upload a document</h2>
+        <form class="student-upload-grid" data-document-upload-form>
+          <div class="student-field">
+            <label for="document-type">Document type</label>
+            <select id="document-type" name="doc_type">
+              <option value="sa_id">SA ID</option>
+              <option value="passport">Passport</option>
+              <option value="matric_certificate">Matric certificate</option>
+              <option value="grade_11_results">Grade 11 results</option>
+              <option value="grade_12_results">Grade 12 results</option>
+              <option value="proof_of_residence">Proof of residence</option>
+              <option value="passport_photo">Passport photo</option>
+              <option value="birth_certificate">Birth certificate</option>
+              <option value="proof_of_payment">Proof of payment</option>
+              <option value="academic_record">Academic record</option>
+            </select>
+          </div>
+          <div class="student-field">
+            <label for="document-file">File</label>
+            <input id="document-file" name="document" type="file" accept=".pdf,.png,.jpg,.jpeg">
+          </div>
+          <button class="student-button primary" type="submit">Upload</button>
+        </form>
+      </section>
+
+      <section class="student-section-stack" aria-label="Uploaded documents">
+        <div class="student-empty-state" data-documents-empty>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l3 3V20H7V3.5Z"></path><path d="M14 3.5V7h3.5"></path></svg>
+          <p class="student-muted">No documents yet. Upload your matric certificate to get started.</p>
+        </div>
+
+        <article class="student-card student-card-body" data-document-row hidden>
+          <div class="student-list-row">
+            <div class="student-inline">
+              <span class="student-record-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l3 3V20H7V3.5Z"></path><path d="M14 3.5V7h3.5"></path></svg></span>
+              <div>
+                <strong data-document-label>Matric certificate</strong>
+                <p class="student-muted" data-document-meta>filename.pdf &bull; 0.00 MB</p>
+              </div>
+            </div>
+            <div class="student-inline">
+              <span class="student-badge warning" data-document-status>pending</span>
+              <button class="student-icon-button" type="button" aria-label="Preview document" data-preview-document><svg viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg></button>
+              <button class="student-icon-button" type="button" aria-label="Delete document" data-delete-document><svg viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M6 7l1 14h10l1-14"></path><path d="M9 7V4h6v3"></path></svg></button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
 
   <script type="module" src="../../js/pages/documents.js"></script>
 </body>

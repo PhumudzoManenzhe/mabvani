@@ -3,35 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | UniApply SA</title>
-    <link rel="stylesheet" href="../../css/variables.css">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="../../css/layouts.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <link rel="stylesheet" href="../../css/public.css">
-    <link rel="stylesheet" href="../../css/responsive.css">
+  <title>Create your profile | UniApply SA</title>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/layouts.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/public.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
 </head>
-<body class="public-page">
-  <header class="site-header">
-    <div class="layout-container header-inner">
-      <a class="brand-link" href="../../index.html">UniApply SA</a>
+<body class="public-page auth-page">
+  <main class="auth-shell" aria-labelledby="register-title">
+    <a class="template-logo auth-logo" href="../../index.html" aria-label="UniApply SA home">
+      <span class="template-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path>
+          <path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path>
+        </svg>
+      </span>
+      <span>UniApply<span class="logo-dot">.</span>SA</span>
+    </a>
 
-      <nav class="site-nav" aria-label="Public navigation">
-        <a href="../../index.html">Home</a>
-        <a href="../../pages/public/about.html">About</a>
-        <a href="../../pages/public/login.html">Login</a>
-        <a href="../../pages/public/register.html">Register</a>
-      </nav>
-    </div>
-  </header>
+    <section class="auth-card">
+      <h1 id="register-title">Create your profile</h1>
+      <p>One profile. Every SA university.</p>
 
-  <main class="layout-container page-shell">
-    <section class="placeholder-section" aria-labelledby="page-title">
-      <p class="eyebrow">Application foundation</p>
-      <h1 id="page-title">Register</h1>
-      <p>Supabase registration will be connected in a later phase.</p>
+      <button class="button button-secondary auth-google" type="button" data-auth-google>
+        <span aria-hidden="true">G</span>
+        Continue with Google
+      </button>
+
+      <div class="auth-divider"><span></span>or with email<span></span></div>
+
+      <form class="auth-form" data-register-form>
+        <div class="form-field">
+          <label for="register-name">Full name</label>
+          <input id="register-name" name="full_name" type="text" autocomplete="name">
+        </div>
+
+        <div class="form-field">
+          <label for="register-email">Email</label>
+          <input id="register-email" name="email" type="email" autocomplete="email">
+        </div>
+
+        <div class="form-field">
+          <label for="register-password">Password</label>
+          <input id="register-password" name="password" type="password" autocomplete="new-password">
+        </div>
+
+        <button class="button button-primary" type="submit">Create account</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
     </section>
+
+    <a class="auth-back" href="../../index.html">Back to home</a>
   </main>
 
   <script type="module" src="../../js/pages/register.js"></script>

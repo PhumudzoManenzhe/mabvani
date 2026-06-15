@@ -3,40 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UniApply SA | Student Applications</title>
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/layouts.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/public.css">
-    <link rel="stylesheet" href="css/responsive.css">
+  <meta name="description" content="Build one student profile, upload your documents once, then apply to South African universities from one dashboard.">
+  <title>UniApply SA | One application, every South African university</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layouts.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
-<body class="public-page">
-  <header class="site-header">
-    <div class="layout-container header-inner">
-      <a class="brand-link" href="index.html">UniApply SA</a>
+<body class="public-page public-landing-page">
+  <header class="public-header">
+    <div class="public-header-inner">
+      <a class="template-logo" href="index.html" aria-label="UniApply SA home">
+        <span class="template-logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path>
+            <path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path>
+          </svg>
+        </span>
+        <span>UniApply<span class="logo-dot">.</span>SA</span>
+      </a>
 
-      <nav class="site-nav" aria-label="Public navigation">
-        <a href="index.html">Home</a>
-        <a href="pages/public/about.html">About</a>
-        <a href="pages/public/login.html">Login</a>
-        <a href="pages/public/register.html">Register</a>
+      <nav class="public-nav" aria-label="Public navigation">
+        <a href="#how">How it works</a>
+        <a href="#universities">Universities</a>
+        <a href="pages/student/results.html">APS calculator</a>
       </nav>
+
+      <div class="public-actions">
+        <a class="button button-secondary" href="pages/public/login.html">Sign in</a>
+        <a class="button button-primary" href="pages/public/register.html">Get started</a>
+      </div>
     </div>
   </header>
 
-  <main class="layout-container page-shell">
-    <section class="hero-section" aria-labelledby="page-title">
-      <p class="eyebrow">Application foundation</p>
-      <h1 id="page-title">UniApply SA</h1>
-      <p>A starter foundation for a South African university application platform. Full student application features will be implemented in later phases.</p>
-        <p class="hero-actions">
-          <a class="button button-primary" href="pages/public/register.html">Register</a>
-          <a class="button button-secondary" href="pages/public/login.html">Login</a>
+  <main>
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <div class="landing-hero-inner">
+        <p class="hero-badge">Built for the class of 2026</p>
+        <h1 id="landing-title">One application, <span>every</span> South African university.</h1>
+        <p class="hero-copy">
+          Build your profile once. Upload your matric certificate once. Apply to UCT, Wits, UP, UJ, UKZN, UNISA and more from one dashboard.
         </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="pages/public/register.html">Start your application</a>
+          <a class="button button-secondary" href="pages/student/results.html">Calculate my APS</a>
+        </div>
+        <p class="hero-note">Free for students &bull; No card required</p>
+      </div>
+    </section>
+
+    <section class="landing-section" id="how" aria-labelledby="how-title">
+      <div class="section-heading">
+        <p class="eyebrow">How it works</p>
+        <h2 id="how-title">Four steps from matric to your acceptance letter.</h2>
+      </div>
+
+      <div class="step-grid">
+        <article class="public-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M7 3.5h7l3 3V20H7V3.5Z"></path>
+              <path d="M14 3.5V7h3.5"></path>
+              <path d="M9.5 11h5"></path>
+              <path d="M9.5 14h5"></path>
+            </svg>
+          </span>
+          <p class="step-number">01</p>
+          <h3>Build your profile</h3>
+          <p>Personal info, school, subjects, parents and contacts captured once.</p>
+        </article>
+
+        <article class="public-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M12 3 5 6v5c0 4.5 2.8 8 7 10 4.2-2 7-5.5 7-10V6l-7-3Z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+          </span>
+          <p class="step-number">02</p>
+          <h3>Upload documents</h3>
+          <p>ID, matric certificate and proof of residence stored for reuse.</p>
+        </article>
+
+        <article class="public-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M12 21a9 9 0 1 0-9-9"></path>
+              <path d="M12 12 17 7"></path>
+              <path d="M7 17h10"></path>
+            </svg>
+          </span>
+          <p class="step-number">03</p>
+          <h3>Check eligibility</h3>
+          <p>Calculate APS and compare your marks with course requirements.</p>
+        </article>
+
+        <article class="public-card">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M4 20h16"></path>
+              <path d="M6 20V9h5v11"></path>
+              <path d="M13 20V5h5v15"></path>
+              <path d="M8 12h1"></path>
+              <path d="M15 8h1"></path>
+            </svg>
+          </span>
+          <p class="step-number">04</p>
+          <h3>Apply and track</h3>
+          <p>Start applications, confirm details and track status in one place.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="universities-band" id="universities" aria-labelledby="universities-title">
+      <div class="landing-section">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow">24 institutions</p>
+            <h2 id="universities-title">Every public South African university.</h2>
+          </div>
+          <a class="button button-secondary" href="pages/student/universities.html">Browse universities</a>
+        </div>
+
+        <div class="university-chip-grid" aria-label="Supported universities">
+          <span>UCT</span>
+          <span>UP</span>
+          <span>Wits</span>
+          <span>SU</span>
+          <span>UJ</span>
+          <span>NMU</span>
+          <span>NWU</span>
+          <span>UKZN</span>
+          <span>UFS</span>
+          <span>Rhodes</span>
+          <span>UL</span>
+          <span>UNIVEN</span>
+          <span>TUT</span>
+          <span>DUT</span>
+          <span>CPUT</span>
+          <span>VUT</span>
+          <span>CUT</span>
+          <span>MUT</span>
+          <span>WSU</span>
+          <span>UFH</span>
+          <span>SPU</span>
+          <span>UMP</span>
+          <span>SMU</span>
+          <span>UNISA</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section">
+      <div class="deadline-callout">
+        <div>
+          <p class="callout-label">Deadlines are closer than you think</p>
+          <h2>Most SA universities close mid-year. Start now.</h2>
+          <p>Use one workspace to stay ahead of closing dates and document requirements.</p>
+        </div>
+        <a class="button button-primary" href="pages/public/register.html">Create my profile</a>
+      </div>
     </section>
   </main>
+
+  <footer class="public-footer">
+    <a class="template-logo" href="index.html" aria-label="UniApply SA home">
+      <span class="template-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false">
+          <path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path>
+          <path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path>
+        </svg>
+      </span>
+      <span>UniApply<span class="logo-dot">.</span>SA</span>
+    </a>
+    <p>&copy; 2026 UniApply SA. Not affiliated with any university.</p>
+  </footer>
 
   <script type="module" src="js/pages/landing.js"></script>
 </body>

@@ -3,36 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Dashboard | UniApply SA</title>
-    <link rel="stylesheet" href="../../css/variables.css">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="../../css/layouts.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <link rel="stylesheet" href="../../css/student.css">
-    <link rel="stylesheet" href="../../css/responsive.css">
+  <title>Dashboard | UniApply SA</title>
+  <link rel="stylesheet" href="../../css/variables.css">
+  <link rel="stylesheet" href="../../css/reset.css">
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/layouts.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  <link rel="stylesheet" href="../../css/student.css">
+  <link rel="stylesheet" href="../../css/responsive.css">
 </head>
 <body class="student-page">
-  <header class="site-header">
-    <div class="layout-container header-inner">
-      <a class="brand-link" href="../../index.html">UniApply SA</a>
-
-      <nav class="site-nav" aria-label="Student navigation">
-        <a href="../../index.html">Home</a>
-        <a href="../../pages/student/dashboard.html">Dashboard</a>
-        <a href="../../pages/student/profile.html">Profile</a>
-        <a href="../../pages/student/applications.html">Applications</a>
-      </nav>
-    </div>
+  <header class="student-mobile-header">
+    <a class="student-logo" href="../../index.html" aria-label="UniApply SA home">
+      <span class="student-logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path><path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path></svg>
+      </span>
+      <span>UniApply<span class="student-logo-dot">.</span>SA</span>
+    </a>
+    <button class="student-menu-button" type="button" aria-label="Open navigation" data-mobile-menu>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+    </button>
   </header>
 
-  <main class="layout-container page-shell">
-    <section class="placeholder-section" aria-labelledby="page-title">
-      <p class="eyebrow">Student workspace</p>
-      <h1 id="page-title">Student Dashboard</h1>
-      <p>Student overview widgets will be implemented in a later phase.</p>
-    </section>
-  </main>
+  <div class="student-shell">
+    <aside class="student-sidebar" aria-label="Student navigation">
+      <a class="student-logo" href="../../index.html" aria-label="UniApply SA home">
+        <span class="student-logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path><path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path></svg>
+        </span>
+        <span>UniApply<span class="student-logo-dot">.</span>SA</span>
+      </a>
+
+      <nav class="student-nav" aria-label="Primary">
+        <a class="student-nav-link is-active" href="dashboard.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"></rect><rect x="14" y="4" width="6" height="6" rx="1"></rect><rect x="4" y="14" width="6" height="6" rx="1"></rect><rect x="14" y="14" width="6" height="6" rx="1"></rect></svg>Dashboard</a>
+        <a class="student-nav-link" href="universities.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"></path><path d="M6 20V9h5v11"></path><path d="M13 20V5h5v15"></path></svg>Universities</a>
+        <a class="student-nav-link" href="applications.html"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="12" height="16" rx="1.5"></rect><path d="M9 10h6"></path><path d="M9 14h4"></path></svg>Applications</a>
+        <a class="student-nav-link" href="documents.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l3 3V20H7V3.5Z"></path><path d="M14 3.5V7h3.5"></path></svg>Documents</a>
+        <a class="student-nav-link" href="profile.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.25"></circle><path d="M5.75 20c.6-3.25 2.7-5 6.25-5s5.65 1.75 6.25 5"></path></svg>Profile</a>
+        <a class="student-nav-link" href="results.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-9-9"></path><path d="M12 12 17 7"></path></svg>APS Calculator</a>
+      </nav>
+
+      <button class="student-button student-signout" type="button" data-sign-out>Sign out</button>
+    </aside>
+
+    <main class="student-main" aria-labelledby="dashboard-title">
+      <header class="student-page-header">
+        <div>
+          <h1 id="dashboard-title">Dashboard</h1>
+          <p class="student-subtitle">Your application overview from the template.</p>
+        </div>
+        <a class="student-icon-button" href="notifications.html" aria-label="Open notifications">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 6-2.25 6.75-2.25 6.75h16.5S18 15 18 9Z"></path><path d="M10 19a2 2 0 0 0 4 0"></path></svg>
+        </a>
+      </header>
+
+      <section class="student-stat-grid" aria-label="Dashboard summary">
+        <article class="student-card student-stat-card">
+          <div class="student-stat-row">
+            <span class="student-muted">Profile completeness</span>
+            <span class="student-badge" data-profile-completion>0%</span>
+          </div>
+          <div class="student-progress" aria-label="Profile completeness 0 percent"><span style="width: 0%;"></span></div>
+          <a class="student-link-action" href="profile.html">Complete profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="student-card student-stat-card">
+          <span class="student-muted">Your APS score</span>
+          <p class="student-title" data-aps-score>--</p>
+          <a class="student-link-action" href="results.html">Recalculate <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="student-card student-stat-card">
+          <div class="student-inline">
+            <span class="student-record-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l3 3V20H7V3.5Z"></path><path d="M14 3.5V7h3.5"></path></svg></span>
+            <div>
+              <p class="student-title" data-documents-count>0</p>
+              <span class="student-muted">documents uploaded</span>
+            </div>
+          </div>
+          <a class="student-link-action" href="documents.html">Manage documents <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg></a>
+        </article>
+      </section>
+
+      <section class="student-dashboard-grid">
+        <article class="student-card student-card-body">
+          <div class="student-panel-header">
+            <h2 class="student-panel-title">Your applications</h2>
+            <a class="student-button pill" href="universities.html">New application</a>
+          </div>
+          <div class="student-empty-state">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16"></path><path d="M6 20V9h5v11"></path><path d="M13 20V5h5v15"></path></svg>
+            <p class="student-muted">You have not applied anywhere yet.</p>
+            <a class="student-button primary" href="universities.html">Browse universities</a>
+          </div>
+          <p class="student-muted"><span data-submitted-count>0</span> submitted &bull; <span data-draft-count>0</span> drafts</p>
+        </article>
+
+        <article class="student-card student-card-body">
+          <div class="student-panel-header">
+            <h2 class="student-panel-title student-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3"></path><path d="M17 3v3"></path><rect x="4.5" y="5" width="15" height="15" rx="2"></rect><path d="M4.5 9h15"></path></svg>Closing soon</h2>
+          </div>
+          <ul class="student-list" aria-label="Upcoming deadlines" data-deadline-list>
+            <li class="student-list-row"><span>UNISA</span><time class="student-muted student-tabular" datetime="2026-01-31">2026-01-31</time></li>
+            <li class="student-list-row"><span>UP</span><time class="student-muted student-tabular" datetime="2026-06-30">2026-06-30</time></li>
+            <li class="student-list-row"><span>UCT</span><time class="student-muted student-tabular" datetime="2026-07-31">2026-07-31</time></li>
+            <li class="student-list-row"><span>SU</span><time class="student-muted student-tabular" datetime="2026-07-31">2026-07-31</time></li>
+            <li class="student-list-row"><span>Wits</span><time class="student-muted student-tabular" datetime="2026-09-30">2026-09-30</time></li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
 
   <script type="module" src="../../js/pages/studentDashboard.js"></script>
 </body>

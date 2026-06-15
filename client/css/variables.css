@@ -1,18 +1,80 @@
 /*
-  Design tokens for UniApply SA. Keep colour, spacing, radius, and shadow
-  values here so future pages can share one visual system.
+  UniApply SA design system converted from the provided Tailwind source CSS.
+  The original @theme/@utility rules need a Tailwind build step, so these
+  variables expose the same design values directly to the static HTML pages.
 */
 :root {
-  --color-primary-blue: #2563eb;
-  --color-dark-navy: #0f172a;
-  --color-white: #ffffff;
-  --color-page-background: #f8fafc;
-  --color-main-text: #111827;
-  --color-muted-text: #64748b;
-  --color-success: #15803d;
-  --color-warning: #b45309;
-  --color-error: #b91c1c;
+  /* Radius scale: mirrors the template's rounded card and control system. */
+  --radius: 0.875rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
 
+  /* Font scale: uses template font names with safe local fallbacks. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Core surfaces: sets the light theme background, text, card, and popover colors. */
+  --background: oklch(0.99 0.005 95);
+  --foreground: oklch(0.18 0.04 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 250);
+
+  /* Brand colors: deep navy primary and South African gold accent from the template. */
+  --primary: oklch(0.27 0.07 255);
+  --primary-foreground: oklch(0.98 0.01 95);
+  --secondary: oklch(0.96 0.02 85);
+  --secondary-foreground: oklch(0.27 0.07 255);
+  --accent: oklch(0.82 0.16 80);
+  --accent-foreground: oklch(0.22 0.05 60);
+
+  /* Muted colors: supports secondary text, quiet panels, and disabled-looking UI. */
+  --muted: oklch(0.96 0.01 250);
+  --muted-foreground: oklch(0.5 0.03 250);
+
+  /* Feedback colors: keeps success, warning, and destructive states consistent. */
+  --success: oklch(0.65 0.16 150);
+  --success-foreground: oklch(0.99 0.01 150);
+  --warning: oklch(0.78 0.16 70);
+  --warning-foreground: oklch(0.2 0.05 60);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0.01 95);
+
+  /* Form and border colors: gives inputs, separators, and focus rings one source of truth. */
+  --border: oklch(0.92 0.01 250);
+  --input: oklch(0.92 0.01 250);
+  --ring: oklch(0.27 0.07 255);
+
+  /* Chart colors: reserves the template palette for future dashboards and reports. */
+  --chart-1: oklch(0.27 0.07 255);
+  --chart-2: oklch(0.82 0.16 80);
+  --chart-3: oklch(0.65 0.16 150);
+  --chart-4: oklch(0.58 0.18 30);
+  --chart-5: oklch(0.55 0.18 290);
+
+  /* Sidebar colors: keeps authenticated navigation aligned with the app shell template. */
+  --sidebar: oklch(0.99 0.005 95);
+  --sidebar-foreground: oklch(0.18 0.04 250);
+  --sidebar-primary: oklch(0.27 0.07 255);
+  --sidebar-primary-foreground: oklch(0.98 0.01 95);
+  --sidebar-accent: oklch(0.96 0.01 250);
+  --sidebar-accent-foreground: oklch(0.27 0.07 255);
+  --sidebar-border: oklch(0.92 0.01 250);
+  --sidebar-ring: oklch(0.27 0.07 255);
+
+  /* Effects: recreates the template's hero wash and elevated card shadow. */
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.96 0.05 80 / 0.5), transparent 60%),
+    linear-gradient(180deg, oklch(0.99 0.005 95), oklch(0.97 0.015 90));
+  --shadow-card: 0 1px 2px oklch(0.27 0.07 255 / 0.04), 0 8px 24px -12px oklch(0.27 0.07 255 / 0.12);
+  --shadow-sm: 0 1px 2px oklch(0.27 0.07 255 / 0.08);
+  --shadow-md: var(--shadow-card);
+
+  /* Spacing scale: preserves the repo's existing spacing API for older pages. */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -21,12 +83,55 @@
   --space-8: 2rem;
   --space-12: 3rem;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Legacy aliases: lets existing files keep working while using the new design system. */
+  --color-primary-blue: var(--primary);
+  --color-dark-navy: var(--foreground);
+  --color-white: var(--card);
+  --color-page-background: var(--background);
+  --color-main-text: var(--foreground);
+  --color-muted-text: var(--muted-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--destructive);
 
-  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08);
-  --shadow-md: 0 10px 24px rgb(15 23 42 / 0.1);
-
+  /* Layout width: keeps public and app content aligned with the template container. */
   --max-content-width: 1120px;
+}
+
+/* Dark theme: preserves the provided template's alternate color mode for future toggles. */
+.dark {
+  --background: oklch(0.14 0.03 255);
+  --foreground: oklch(0.97 0.01 95);
+  --card: oklch(0.18 0.035 255);
+  --card-foreground: oklch(0.97 0.01 95);
+  --popover: oklch(0.18 0.035 255);
+  --popover-foreground: oklch(0.97 0.01 95);
+  --primary: oklch(0.82 0.16 80);
+  --primary-foreground: oklch(0.18 0.04 250);
+  --secondary: oklch(0.24 0.04 255);
+  --secondary-foreground: oklch(0.97 0.01 95);
+  --muted: oklch(0.24 0.04 255);
+  --muted-foreground: oklch(0.72 0.02 250);
+  --accent: oklch(0.82 0.16 80);
+  --accent-foreground: oklch(0.18 0.04 250);
+  --success: oklch(0.7 0.16 150);
+  --success-foreground: oklch(0.15 0.04 150);
+  --warning: oklch(0.82 0.16 75);
+  --warning-foreground: oklch(0.18 0.04 60);
+  --destructive: oklch(0.65 0.2 27);
+  --destructive-foreground: oklch(0.99 0.01 95);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.82 0.16 80);
+  --sidebar: oklch(0.18 0.035 255);
+  --sidebar-foreground: oklch(0.97 0.01 95);
+  --sidebar-primary: oklch(0.82 0.16 80);
+  --sidebar-primary-foreground: oklch(0.18 0.04 250);
+  --sidebar-accent: oklch(0.24 0.04 255);
+  --sidebar-accent-foreground: oklch(0.97 0.01 95);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.82 0.16 80);
+  --gradient-hero: radial-gradient(ellipse at top, oklch(0.82 0.16 80 / 0.15), transparent 60%),
+    linear-gradient(180deg, oklch(0.14 0.03 255), oklch(0.12 0.03 255));
+  --shadow-card: 0 1px 2px oklch(0 0 0 / 0.4), 0 8px 24px -12px oklch(0 0 0 / 0.5);
 }

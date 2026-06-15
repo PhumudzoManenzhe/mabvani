@@ -1,8 +1,673 @@
 /*
-  Student workspace starter styles. Keep student-specific layout refinements
-  here as the dashboard and application flow grow.
+  Student template styles. These rules convert the React/Tailwind template
+  into static CSS for the existing HTML pages in client/pages/student.
 */
-.student-page .placeholder-section {
-  border-left: 4px solid var(--color-primary-blue);
-  padding-left: var(--space-6);
+
+/* Student page canvas: sets the authenticated app background and shared color tokens. */
+.student-page {
+  --student-primary: var(--primary);
+  --student-primary-foreground: var(--primary-foreground);
+  --student-accent: var(--accent);
+  --student-card: var(--card);
+  --student-border: var(--border);
+  --student-muted: var(--muted-foreground);
+  --student-soft: var(--muted);
+  --student-success: var(--success);
+  --student-warning: var(--warning);
+  --student-danger: var(--destructive);
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100dvh;
+}
+
+/* Student SVG baseline: keeps inline icons consistent and inherited from text color. */
+.student-page svg {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+/* App shell: creates the desktop sidebar plus content grid from the template. */
+.student-shell {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 100dvh;
+}
+
+/* Student sidebar: fixes desktop navigation to the left with a subtle divider. */
+.student-sidebar {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-right: 1px solid var(--student-border);
+  background: var(--sidebar);
+  padding: 1.25rem;
+}
+
+/* Mobile top bar: appears on phones and tablets when the sidebar collapses. */
+.student-mobile-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--student-border);
+  background: color-mix(in oklab, var(--background) 92%, transparent);
+  padding: 0.9rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Logo wrapper: aligns the cap mark and UniApply wordmark. */
+.student-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Logo mark: creates the primary rounded icon tile. */
+.student-logo-mark {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--student-primary);
+  box-shadow: var(--shadow-sm);
+  color: var(--student-primary-foreground);
+}
+
+/* Logo dot: adds the warm accent from the template brand. */
+.student-logo-dot {
+  color: var(--student-accent);
+}
+
+/* Mobile menu button: reserves a 44px touch target for future drawer logic. */
+.student-menu-button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid var(--student-border);
+  border-radius: var(--radius-md);
+  background: var(--student-card);
+  color: var(--foreground);
+}
+
+/* Student navigation stack: spaces the sidebar links consistently. */
+.student-nav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* Student navigation links: provides large, touch-friendly route targets. */
+.student-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 44px;
+  border-radius: var(--radius-md);
+  color: rgb(6 21 37 / 0.72);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0 0.75rem;
+  text-decoration: none;
+}
+
+/* Student navigation hover state: gives non-active links a soft background. */
+.student-nav-link:hover {
+  background: rgb(243 246 249 / 0.85);
+  color: var(--foreground);
+}
+
+/* Active navigation state: marks the current page with primary color. */
+.student-nav-link.is-active {
+  background: var(--student-primary);
+  color: var(--student-primary-foreground);
+}
+
+/* Sign-out placeholder button: matches the template location without adding functionality. */
+.student-signout {
+  margin-top: auto;
+}
+
+/* Main content area: provides responsive gutters and vertical breathing room. */
+.student-main {
+  min-width: 0;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Page header: aligns page title and actions at the top of each view. */
+.student-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Page title: uses the display serif style from the template. */
+.student-page-header h1,
+.student-title {
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* Page subtitle: keeps supporting page text muted and readable. */
+.student-subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--student-muted);
+}
+
+/* Icon action button: creates 44px controls for notification and small actions. */
+.student-icon-button {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+/* Icon action hover: adds subtle feedback without moving the layout. */
+.student-icon-button:hover {
+  background: var(--student-soft);
+}
+
+/* Student card: shared white card treatment for app surfaces. */
+.student-card {
+  border: 1px solid var(--student-border);
+  border-radius: var(--radius-lg);
+  background: var(--student-card);
+  box-shadow: var(--shadow-md);
+}
+
+/* Card padding helper: applies consistent inner spacing to standalone cards. */
+.student-card-body {
+  padding: clamp(1.25rem, 3vw, 1.5rem);
+}
+
+/* Stat grid: creates three responsive dashboard stat cards. */
+.student-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* Dashboard stat card: gives each top metric a stable height. */
+.student-stat-card {
+  display: flex;
+  min-height: 170px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+/* Stat row: aligns labels with badges and icons. */
+.student-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Muted label: styles secondary labels and metadata. */
+.student-muted {
+  color: var(--student-muted);
+}
+
+/* Badge: creates small rounded status/value labels. */
+.student-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  border-radius: 999px;
+  background: var(--student-soft);
+  color: var(--foreground);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0 0.7rem;
+}
+
+/* Status badge colors: communicates different application states. */
+.student-badge.success {
+  background: rgb(22 101 52 / 0.12);
+  color: var(--student-success);
+}
+
+/* Warning badge color: flags draft or pending status. */
+.student-badge.warning {
+  background: rgb(180 83 9 / 0.14);
+  color: var(--student-warning);
+}
+
+/* Danger badge color: flags rejected or missing states. */
+.student-badge.danger {
+  background: rgb(185 28 28 / 0.12);
+  color: var(--student-danger);
+}
+
+/* Progress track: reserves fixed space for profile completeness. */
+.student-progress {
+  height: 0.65rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #d5dee8;
+}
+
+/* Progress fill: represents completed progress and can be updated later by JS. */
+.student-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--student-primary);
+}
+
+/* Text link action: aligns text and arrow icons inside cards. */
+.student-link-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  color: var(--foreground);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Student button: shared static button style for template actions. */
+.student-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  border: 1px solid var(--student-border);
+  border-radius: var(--radius-md);
+  background: var(--student-card);
+  color: var(--foreground);
+  font-weight: 700;
+  padding: 0.65rem 1rem;
+  text-decoration: none;
+}
+
+/* Primary student button: highlights the main action on a view. */
+.student-button.primary {
+  border-color: var(--student-primary);
+  background: var(--student-primary);
+  color: var(--student-primary-foreground);
+}
+
+/* Pill student button: matches the rounded buttons from the template. */
+.student-button.pill {
+  border-radius: 999px;
+}
+
+/* Student button hover: provides quick feedback without layout shift. */
+.student-button:hover {
+  filter: brightness(0.97);
+}
+
+/* Two-column dashboard layout: sizes application summary and deadline list. */
+.student-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+/* Panel header: aligns section titles with secondary actions. */
+.student-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Panel title: gives cards a clear section heading. */
+.student-panel-title {
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* Empty state: centers icons, message, and action inside dashed cards. */
+.student-empty-state {
+  display: grid;
+  min-height: 210px;
+  place-items: center;
+  border: 1px dashed var(--student-border);
+  border-radius: var(--radius-lg);
+  background: rgb(243 246 249 / 0.45);
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Empty state icon: gives empty states a muted visual anchor. */
+.student-empty-state svg {
+  width: 2rem;
+  height: 2rem;
+  color: var(--student-muted);
+}
+
+/* Deadline list: removes default list style and separates rows. */
+.student-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Deadline and record rows: keeps row content spaced and scan-friendly. */
+.student-list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--student-border);
+  padding: 0.9rem 0;
+}
+
+/* Last list row: removes the final divider. */
+.student-list-row:last-child {
+  border-bottom: 0;
+}
+
+/* Date and numeric text: keeps numbers stable while data changes. */
+.student-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Form grid: creates responsive form columns for profile and filters. */
+.student-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Full-width form helper: lets a field span both columns. */
+.student-form-span {
+  grid-column: 1 / -1;
+}
+
+/* Field wrapper: stacks labels and controls with clear spacing. */
+.student-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+/* Field labels: keeps labels visible and bold. */
+.student-field label {
+  color: var(--foreground);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Field controls: sets accessible height and border for inputs/selects/textareas. */
+.student-field input,
+.student-field select,
+.student-field textarea {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--student-border);
+  border-radius: var(--radius-md);
+  background: var(--student-card);
+  color: var(--foreground);
+  padding: 0.65rem 0.8rem;
+}
+
+/* Field focus: makes keyboard focus clear and accessible. */
+.student-field input:focus,
+.student-field select:focus,
+.student-field textarea:focus {
+  border-color: var(--student-primary);
+  outline: 3px solid rgb(11 47 87 / 0.16);
+}
+
+/* Profile section stack: spaces the separate profile form cards. */
+.student-section-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Tabs look: creates static tab navigation for profile sections. */
+.student-tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Tab button: provides touch-friendly static tab labels. */
+.student-tab {
+  min-height: 42px;
+  border: 1px solid var(--student-border);
+  border-radius: var(--radius-md);
+  background: var(--student-card);
+  color: var(--foreground);
+  font-weight: 700;
+}
+
+/* Active tab look: marks the first visible profile section. */
+.student-tab.is-active {
+  background: var(--student-primary);
+  color: var(--student-primary-foreground);
+}
+
+/* Subject row: lays out subject, mark, and remove control for APS forms. */
+.student-subject-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 130px 44px;
+  gap: 0.6rem;
+}
+
+/* Calculator grid: gives APS input and result cards their desktop balance. */
+.student-calculator-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+  gap: 1.25rem;
+}
+
+/* APS result card: turns the score card into a strong primary surface. */
+.aps-result-card {
+  background: var(--student-primary);
+  color: var(--student-primary-foreground);
+}
+
+/* APS score: creates the large display number. */
+.aps-score-display {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Search filter grid: aligns university search and province filter. */
+.student-filter-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* University grid: creates responsive institution cards. */
+.student-university-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* University card link: makes each institution card clickable without default link styling. */
+.student-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Card hover: gives clickable cards a subtle lift. */
+.student-card-link .student-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Card hover transition: smooths clickable card movement. */
+.student-card-link .student-card {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Detail grid: sizes main detail content beside action panels. */
+.student-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 1.25rem;
+}
+
+/* Detail stat grid: splits detail metadata into compact cards. */
+.student-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+/* Detail stat tile: creates the soft metadata boxes in detail views. */
+.student-detail-stat {
+  border-radius: var(--radius-md);
+  background: rgb(243 246 249 / 0.75);
+  padding: 1rem;
+}
+
+/* Chip group: wraps faculty and document tags. */
+.student-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Document upload grid: lays out select and upload controls. */
+.student-upload-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.8fr) auto;
+  gap: 0.8rem;
+  align-items: end;
+}
+
+/* Document row icon: gives document records a consistent leading tile. */
+.student-record-icon {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--student-soft);
+  color: var(--student-primary);
+  flex: 0 0 auto;
+}
+
+/* Sticky save row: keeps the profile save button reachable near the bottom. */
+.student-sticky-actions {
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  bottom: 1rem;
+  margin-top: 1.25rem;
+  pointer-events: none;
+}
+
+/* Sticky action button: keeps only the button interactive in the sticky row. */
+.student-sticky-actions .student-button {
+  pointer-events: auto;
+}
+
+/* Utility row: aligns inline text or icon content. */
+.student-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+/* Tablet layout: collapses the shell into a mobile header and content flow. */
+@media (max-width: 980px) {
+  .student-shell {
+    display: block;
+  }
+
+  .student-sidebar {
+    display: none;
+  }
+
+  .student-mobile-header {
+    display: flex;
+  }
+
+  .student-main {
+    padding: 1.25rem;
+  }
+
+  .student-stat-grid,
+  .student-university-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .student-dashboard-grid,
+  .student-calculator-grid,
+  .student-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Narrow tablet layout: stacks form and tab grids for readability. */
+@media (max-width: 760px) {
+  .student-form-grid,
+  .student-detail-stats,
+  .student-filter-grid,
+  .student-upload-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Phone layout: removes multi-column cards and keeps every control full width. */
+@media (max-width: 560px) {
+  .student-page-header,
+  .student-panel-header,
+  .student-list-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .student-stat-grid,
+  .student-university-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-subject-row {
+    grid-template-columns: 1fr;
+  }
+
+  .student-subject-row .student-icon-button,
+  .student-button {
+    width: 100%;
+  }
 }

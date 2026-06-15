@@ -1,34 +1,60 @@
 /*
-  Global element styles shared by every static page.
+  Global element styles shared by every static page. This file applies the
+  base layer from the provided template CSS without requiring Tailwind.
 */
+
+/* Body base: applies the template background, foreground, font stack, and smoothing. */
 body {
-  background: var(--color-page-background);
-  color: var(--color-main-text);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
   font-size: 16px;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* Link base: keeps links branded and legible across public and student pages. */
 a {
-  color: var(--color-primary-blue);
+  color: var(--primary);
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.18em;
 }
 
+/* Focus ring: uses the template ring color for keyboard accessibility. */
 a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--color-primary-blue);
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--ring);
   outline-offset: 3px;
 }
 
+/* Display headings: applies the Fraunces/serif display style from the template. */
 h1,
 h2,
-h3 {
-  color: var(--color-dark-navy);
+h3,
+.font-display {
+  color: var(--foreground);
+  font-family: var(--font-display);
+  letter-spacing: 0;
   line-height: 1.2;
   margin: 0 0 var(--space-4);
 }
 
+/* Paragraph base: keeps default vertical rhythm consistent. */
 p {
   margin: 0 0 var(--space-4);
+}
+
+/* Hero background utility: replaces the template @utility hero-bg rule. */
+.hero-bg {
+  background: var(--gradient-hero);
+}
+
+/* Elevated card utility: replaces the template @utility card-elevated rule. */
+.card-elevated {
+  box-shadow: var(--shadow-card);
 }
