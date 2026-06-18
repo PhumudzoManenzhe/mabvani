@@ -42,14 +42,14 @@
 
       <form class="student-section-stack" data-profile-form>
         <div class="student-tabs" aria-label="Profile sections">
-          <button class="student-tab is-active" type="button">Personal</button>
-          <button class="student-tab" type="button">Address</button>
-          <button class="student-tab" type="button">Academic</button>
-          <button class="student-tab" type="button">Contacts</button>
-          <button class="student-tab" type="button">Financial</button>
+            <button class="student-tab is-active" data-target="personal">Personal</button>
+            <button class="student-tab" data-target="address">Address</button>
+            <button class="student-tab" data-target="academic">Academic</button>
+            <button class="student-tab" data-target="contacts">Contacts</button>
+            <button class="student-tab" data-target="financial">Financial</button>
         </div>
 
-        <section class="student-card student-card-body" aria-labelledby="personal-title">
+        <section id="personal" class="student-card student-card-body" aria-labelledby="personal-title">
           <h2 id="personal-title" class="student-panel-title">Personal</h2>
           <div class="student-form-grid">
             <div class="student-field"><label for="full-name">Full name</label><input id="full-name" name="full_name" type="text" autocomplete="name"></div>
@@ -63,7 +63,7 @@
           </div>
         </section>
 
-        <section class="student-card student-card-body" aria-labelledby="address-title">
+        <section id="address" class="student-card student-card-body" aria-labelledby="address-title">
           <h2 id="address-title" class="student-panel-title">Address</h2>
           <div class="student-form-grid">
             <div class="student-field student-form-span"><label for="address-line-1">Address line 1</label><input id="address-line-1" name="address_line1" type="text"></div>
@@ -74,7 +74,7 @@
           </div>
         </section>
 
-        <section class="student-card student-card-body" aria-labelledby="academic-title">
+        <section id="academic" class="student-card student-card-body" aria-labelledby="academic-title">
           <h2 id="academic-title" class="student-panel-title">Academic</h2>
           <div class="student-form-grid">
             <div class="student-field"><label for="high-school">High school</label><input id="high-school" name="high_school" type="text"></div>
@@ -94,7 +94,7 @@
           </div>
         </section>
 
-        <section class="student-card student-card-body" aria-labelledby="contacts-title">
+        <section id="contacts" class="student-card student-card-body" aria-labelledby="contacts-title">
           <h2 id="contacts-title" class="student-panel-title">Contacts</h2>
           <div class="student-form-grid">
             <div class="student-field"><label for="parent-name">Parent / guardian name</label><input id="parent-name" name="parent_name" type="text"></div>
@@ -105,7 +105,7 @@
           </div>
         </section>
 
-        <section class="student-card student-card-body" aria-labelledby="financial-title">
+        <section id="financial" class="student-card student-card-body" aria-labelledby="financial-title">
           <h2 id="financial-title" class="student-panel-title">Financial</h2>
           <div class="student-form-grid">
             <label class="student-detail-stat student-form-span"><input name="nsfas_applicant" type="checkbox"> NSFAS applicant</label>
