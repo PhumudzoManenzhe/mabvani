@@ -94,6 +94,8 @@ function renderUniversity(university) {
   createDetailMedia(university);
   setText("[data-university-short-name]", university.shortName);
   setText("[data-university-name]", university.name);
+  setText("[data-university-fee]", university.applicationFee || "R100");
+  setText("[data-university-closing-date]", university.application.closeDate || "TBA");
   setText("[data-university-location]", `${university.city}, ${university.province}`);
   setText("[data-university-type]", university.type);
   setText("[data-university-description]", getUniversityDescription(university));

@@ -47,10 +47,29 @@ function updateResultCount(count) {
 
 function getFilterValues() {
   const formData = new FormData(form);
+  const query = formData.get("q")?.toString() || "";
+  const province = formData.get("province")?.toString() || "";
+
+  // Save the current values to the browser's session memory
+  sessionStorage.setItem("universityQuery", query);
+  sessionStorage.setItem("universityProvince", province);
+
   return {
-    query: formData.get("q")?.toString() || "",
-    province: formData.get("province")?.toString() || "",
+    query: query,
+    province: province,
   };
+}
+function restoreFilterValues() {
+  const savedQuery = sessionStorage.getItem("universityQuery");
+  const savedProvince = sessionStorage.getItem("universityProvince");
+
+  // If we have saved memory, put it back into the HTML inputs
+  if (savedQuery !== null) {
+    form.elements["q"].value = savedQuery;
+  }
+  if (savedProvince !== null) {
+    form.elements["province"].value = savedProvince;
+  }
 }
 
 function renderUniversities() {
@@ -69,10 +88,16 @@ function renderUniversities() {
   });
 }
 
+// --- Initialize Page ---
 populateProvinceFilter();
+restoreFilterValues(); // <-- This line restores the memory first!
 renderUniversities();
 
+// --- Event Listeners ---
 form.addEventListener("input", renderUniversities);
 form.addEventListener("change", renderUniversities);
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // Stops the Enter key from refreshing the page
+});
 
 // TODO: Wire [data-sign-out] to the auth/session service.

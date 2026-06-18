@@ -33,22 +33,31 @@
     </aside>
 
     <main class="student-main" aria-labelledby="university-title">
-      <a class="student-link-action" href="universities.html">Back to universities</a>
+      <!-- <a class="student-link-action" href="universities.html">Back to universities</a> -->
 
       <section class="student-detail-grid">
         <article class="student-card student-card-body student-university-detail">
           <div class="student-detail-media" data-university-media></div>
-
-          <div class="student-page-header">
-            <div>
-              <p class="student-muted" data-university-short-name>UCT</p>
-              <h1 id="university-title" data-university-name>University of Cape Town</h1>
-              <p class="student-subtitle" data-university-location>Cape Town, Western Cape</p>
-            </div>
-            <span class="student-badge" data-university-type>Traditional University</span>
+          
+          <div class="student-card-body">
+          <div class="student-card-header-row" style="align-items: center; margin-bottom: 0.5rem;">
+            <h1 id="university-title" class="student-title" style="margin: 0;" data-university-name>University of Cape Town</h1>
           </div>
 
-          <p data-university-description>Research-led university with a wide range of undergraduate programmes.</p>
+          <span class="student-card-shortname" data-university-short-name>UCT</span>
+
+          <p class="student-card-shortdesc" data-university-description>Research-led university with a wide range of undergraduate programmes.</p>
+
+          <div class="student-card-details-row" style="margin-bottom: 2.5rem; justify-content: flex-start; gap: 2rem;">
+            <div class="student-card-detail-item">
+              <svg viewBox="0 0 24 24" class="student-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> 
+              <span data-university-location>Cape Town, Western Cape</span>
+            </div>
+            <div class="student-card-detail-item">
+              <svg viewBox="0 0 24 24" class="student-icon"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> 
+              <span data-university-closing-date>31 July 2026</span>
+            </div>
+          </div>
 
           <div class="student-detail-stats">
             <div class="student-detail-stat"><p class="student-muted">Applications open</p><strong data-university-opening>1 April 2026</strong></div>
@@ -64,6 +73,7 @@
           <ul class="student-list student-note-list" data-university-note-list>
             <li class="student-list-row">Programme deadlines may close earlier than the standard date.</li>
           </ul>
+          </div>
         </article>
 
         <aside class="student-section-stack">

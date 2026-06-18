@@ -36,14 +36,19 @@
       <header class="student-page-header">
         <div>
           <h1 id="universities-title">Universities</h1>
-          <p class="student-subtitle">Search and compare public South African universities.</p>
         </div>
       </header>
 
       <form class="student-filter-grid" data-university-filter-form>
         <div class="student-field">
-          <label for="university-search">Search by name</label>
-          <input id="university-search" name="q" type="search" placeholder="Search by name...">
+          <label for="university-search">Search bar</label>
+          <div class="student-search-wrapper">
+            <svg viewBox="0 0 24 24" class="student-search-icon" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input id="university-search" name="q" type="search" placeholder="Search" class="has-icon">
+          </div>
         </div>
         <div class="student-field">
           <label for="province-filter">Province</label>
@@ -57,7 +62,6 @@
 
       <section class="student-university-grid" aria-label="Universities" data-university-list></section>
 
-      <p><a class="student-button pill" href="results.html">Not sure where you qualify? Use the APS calculator</a></p>
     </main>
   </div>
 

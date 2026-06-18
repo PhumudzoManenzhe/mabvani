@@ -780,6 +780,88 @@
   fill: none;
 }
 
+/* --- Search Input with Icon --- */
+
+.student-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.student-search-icon {
+  position: absolute;
+  left: 0.85rem; /* Puts the icon perfectly inside the left edge */
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--student-muted);
+  pointer-events: none; /* Ensures you can still click the input "through" the icon */
+}
+
+/* Adds extra padding on the left so the text doesn't type over the icon */
+.student-search-wrapper input.has-icon {
+  padding-left: 2.4rem;
+}
+
+/* --- University Detail Page Media --- */
+
+.student-detail-media {
+  width: 100%;
+  height: 320px; 
+  margin-bottom: 0; /* Let the new card-body wrapper handle the spacing below */
+  
+  /* Rounds ONLY the top-left and top-right corners */
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0; 
+  border-bottom: 1px solid var(--student-border); /* Matches the main directory cards */
+  
+  overflow: hidden; 
+}
+
+/* Ensure the image scales and crops beautifully */
+.student-detail-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This is the magic rule that prevents any stretching/squishing */
+  display: block;
+}
+
+/* Style the fallback text if an image is missing */
+.student-detail-media .student-university-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--student-soft);
+  color: var(--student-primary);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+}
+
+/* Force the detail card to have zero padding so the image stays flush */
+.student-university-detail {
+  padding: 0 !important;
+}
+
+/* Ensure the new body wrapper puts the padding back for the text */
+.student-university-detail .student-card-body {
+  padding: clamp(1.25rem, 3vw, 1.5rem);
+}
+
+/* Shrink the massive title on the university detail page */
+.student-card-header-row .student-title {
+  font-size: 1.8rem; /* <-- Change this number to make it bigger or smaller! */
+  line-height: 1.2;
+}
+
+/* Make sure it drops down a little bit more on small mobile phones */
+@media (max-width: 560px) {
+  .student-card-header-row .student-title {
+    font-size: 1.35rem; 
+  }
+}
+
 /* Narrow tablet layout: stacks form and tab grids for readability. */
 @media (max-width: 760px) {
   .student-form-grid,
