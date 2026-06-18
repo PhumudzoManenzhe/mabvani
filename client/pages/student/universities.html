@@ -47,73 +47,15 @@
         </div>
         <div class="student-field">
           <label for="province-filter">Province</label>
-          <select id="province-filter" name="province">
-            <option>All</option>
-            <option>Eastern Cape</option>
-            <option>Free State</option>
-            <option>Gauteng</option>
-            <option>KwaZulu-Natal</option>
-            <option>Limpopo</option>
-            <option>Mpumalanga</option>
-            <option>Northern Cape</option>
-            <option>North West</option>
-            <option>Western Cape</option>
+          <select id="province-filter" name="province" data-university-province>
+            <option value="">All provinces</option>
           </select>
         </div>
       </form>
 
-      <section class="student-university-grid" aria-label="Universities" data-university-list>
-        <a class="student-card-link" href="university-details.html">
-          <article class="student-card student-card-body">
-            <div class="student-list-row">
-              <div>
-                <h2 class="student-panel-title">University of Cape Town</h2>
-                <p class="student-muted">UCT</p>
-              </div>
-              <span class="student-badge">R100</span>
-            </div>
-            <p class="student-muted">Research-led university based in Cape Town.</p>
-            <div class="student-list-row">
-              <span class="student-muted">Cape Town, Western Cape</span>
-              <time class="student-muted student-tabular" datetime="2026-07-31">2026-07-31</time>
-            </div>
-          </article>
-        </a>
+      <p class="student-muted student-result-count" aria-live="polite" data-university-count>0 universities</p>
 
-        <a class="student-card-link" href="university-details.html">
-          <article class="student-card student-card-body">
-            <div class="student-list-row">
-              <div>
-                <h2 class="student-panel-title">University of Pretoria</h2>
-                <p class="student-muted">UP</p>
-              </div>
-              <span class="student-badge">R300</span>
-            </div>
-            <p class="student-muted">Large multi-faculty university in Gauteng.</p>
-            <div class="student-list-row">
-              <span class="student-muted">Pretoria, Gauteng</span>
-              <time class="student-muted student-tabular" datetime="2026-06-30">2026-06-30</time>
-            </div>
-          </article>
-        </a>
-
-        <a class="student-card-link" href="university-details.html">
-          <article class="student-card student-card-body">
-            <div class="student-list-row">
-              <div>
-                <h2 class="student-panel-title">University of the Witwatersrand</h2>
-                <p class="student-muted">Wits</p>
-              </div>
-              <span class="student-badge">R200</span>
-            </div>
-            <p class="student-muted">Johannesburg university with broad professional programmes.</p>
-            <div class="student-list-row">
-              <span class="student-muted">Johannesburg, Gauteng</span>
-              <time class="student-muted student-tabular" datetime="2026-09-30">2026-09-30</time>
-            </div>
-          </article>
-        </a>
-      </section>
+      <section class="student-university-grid" aria-label="Universities" data-university-list></section>
 
       <p><a class="student-button pill" href="results.html">Not sure where you qualify? Use the APS calculator</a></p>
     </main>

@@ -36,61 +36,56 @@
       <a class="student-link-action" href="universities.html">Back to universities</a>
 
       <section class="student-detail-grid">
-        <article class="student-card student-card-body">
+        <article class="student-card student-card-body student-university-detail">
+          <div class="student-detail-media" data-university-media></div>
+
           <div class="student-page-header">
             <div>
               <p class="student-muted" data-university-short-name>UCT</p>
               <h1 id="university-title" data-university-name>University of Cape Town</h1>
               <p class="student-subtitle" data-university-location>Cape Town, Western Cape</p>
             </div>
-            <button class="student-icon-button" type="button" aria-label="Save university" data-save-university><svg viewBox="0 0 24 24"><path d="M19 21 12 17 5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16Z"></path></svg></button>
+            <span class="student-badge" data-university-type>Traditional University</span>
           </div>
 
           <p data-university-description>Research-led university with a wide range of undergraduate programmes.</p>
 
           <div class="student-detail-stats">
-            <div class="student-detail-stat"><p class="student-muted">Closing date</p><strong data-university-closing>2026-07-31</strong></div>
-            <div class="student-detail-stat"><p class="student-muted">Application fee</p><strong data-university-fee>R100</strong></div>
+            <div class="student-detail-stat"><p class="student-muted">Applications open</p><strong data-university-opening>1 April 2026</strong></div>
+            <div class="student-detail-stat"><p class="student-muted">Standard close</p><strong data-university-closing>31 July 2026</strong></div>
+            <div class="student-detail-stat"><p class="student-muted">Province</p><strong data-university-province>Western Cape</strong></div>
+            <div class="student-detail-stat"><p class="student-muted">Application route</p><strong data-university-route>Direct university application</strong></div>
           </div>
 
-          <h2 class="student-panel-title">Faculties</h2>
-          <div class="student-chip-group" data-faculty-list>
-            <span class="student-badge">Commerce</span>
-            <span class="student-badge">Engineering</span>
-            <span class="student-badge">Health Sciences</span>
-            <span class="student-badge">Humanities</span>
-          </div>
+          <h2 class="student-panel-title">Institution details</h2>
+          <div class="student-chip-group" data-university-chip-list></div>
 
-          <h2 class="student-panel-title">Courses</h2>
-          <ul class="student-list" data-course-list>
-            <li class="student-list-row">
-              <div><strong>BSc Computer Science</strong><p class="student-muted">APS required: 32 &bull; Science</p></div>
-              <span class="student-badge success">eligible</span>
-            </li>
-            <li class="student-list-row">
-              <div><strong>BCom Accounting</strong><p class="student-muted">APS required: 30 &bull; Commerce</p></div>
-              <span class="student-badge warning">likely eligible</span>
-            </li>
-            <li class="student-list-row">
-              <div><strong>MBChB Medicine</strong><p class="student-muted">APS required: 42 &bull; Health Sciences</p></div>
-              <span class="student-badge danger">needs review</span>
-            </li>
+          <h2 class="student-panel-title">Deadline notes</h2>
+          <ul class="student-list student-note-list" data-university-note-list>
+            <li class="student-list-row">Programme deadlines may close earlier than the standard date.</li>
           </ul>
         </article>
 
         <aside class="student-section-stack">
           <article class="student-card student-card-body">
-            <h2 class="student-panel-title">Apply now</h2>
-            <p class="student-muted">Create a draft application and pre-fill the portal with your profile.</p>
+            <h2 class="student-panel-title">Application overview</h2>
+            <p class="student-muted">Use the standard undergraduate dates as a planning guide and verify programme-specific cutoffs before applying.</p>
             <button class="student-button primary" type="button" data-start-application>Start application</button>
-            <p class="student-muted">Your APS: <strong data-student-aps>0</strong></p>
+            <p class="student-muted">Typical opening period: <strong data-university-opening-period>April</strong></p>
+            <p class="student-muted">Standard close: <strong data-university-sidebar-close>31 July 2026</strong></p>
           </article>
 
           <article class="student-card student-card-body">
             <h2 class="student-panel-title">Contact</h2>
-            <p class="student-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="m4 7 8 6 8-6"></path></svg><span data-university-email>admissions@example.ac.za</span></p>
-            <p class="student-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"></path></svg><span data-university-phone>+27 00 000 0000</span></p>
-            <a class="student-link-action" href="#" target="_blank" rel="noreferrer" data-university-website>Visit website</a>
+            <address class="student-contact-list">
+              <p class="student-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 3l8 7.5"></path><path d="M6 9v11h12V9"></path><path d="M10 20v-5h4v5"></path></svg><span data-university-address>Private Bag X3, Rondebosch, Cape Town, 7701</span></p>
+              <p class="student-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"></path><path d="m4 7 8 6 8-6"></path></svg><a href="mailto:admissions@uct.ac.za" data-university-email>admissions@uct.ac.za</a></p>
+              <p class="student-inline"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"></path></svg><a href="tel:+27216509111" data-university-phone>+27 21 650 9111</a></p>
+            </address>
+            <div class="student-link-stack">
+              <a class="student-link-action" href="#" target="_blank" rel="noreferrer" data-university-website>Visit website</a>
+              <a class="student-link-action" href="#" target="_blank" rel="noreferrer" data-university-prospectus>Open prospectus</a>
+            </div>
           </article>
         </aside>
       </section>

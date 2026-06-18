@@ -450,6 +450,58 @@
   gap: 1.25rem;
 }
 
+/* --- Stacked Photo Card Layout --- */
+.student-university-card.is-horizontal {
+  display: flex;
+  flex-direction: column; /* This puts the image on top! */
+  align-items: stretch;
+  overflow: hidden; 
+}
+
+/* Size the top photo panel */
+.student-university-card.is-horizontal .student-university-media {
+  flex: none; 
+  width: 100%;
+  height: 200px; /* Gives the photo a nice wide banner look */
+  border-right: none;
+  border-bottom: 1px solid var(--student-border); 
+}
+
+/* Ensure the image fills the panel perfectly */
+.student-university-card.is-horizontal .student-university-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+/* Style the fallback block if an image is missing */
+.student-university-card.is-horizontal .student-university-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--student-soft);
+  color: var(--student-primary);
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* Size the bottom text panel */
+.student-university-card.is-horizontal .student-university-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+/* Push the deadlines row to the bottom of the card */
+.student-university-card.is-horizontal .student-card-deadlines {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--student-border);
+}
+
 /* Tabs look: creates static tab navigation for profile sections. */
 .student-tabs {
   display: grid;
@@ -514,8 +566,14 @@
 /* University grid: creates responsive institution cards. */
 .student-university-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 1100px) {
+  .student-university-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns on wide screens */
+  }
 }
 
 /* University card link: makes each institution card clickable without default link styling. */
@@ -622,8 +680,7 @@
     padding: 1.25rem;
   }
 
-  .student-stat-grid,
-  .student-university-grid {
+  .student-stat-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -632,6 +689,95 @@
   .student-detail-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* --- New Layout Specifics for the Text Content --- */
+
+/* Header Row (Title + Price) */
+.student-card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Adjust the title to fit nicely next to the badge */
+.student-card-header-row .student-panel-title {
+  font-size: 1.35rem; 
+  line-height: 1.2;
+}
+
+/* The Price Badge (R105) */
+.student-price-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #EAE6DF; /* Soft beige/grey color from your screenshot */
+  color: var(--foreground);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Yellow Short Name */
+.student-card-shortname {
+  display: block;
+  color: #FBBF24; /* Amber/Yellow color */
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Short Description */
+.student-card-shortdesc {
+  color: var(--student-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Details Row (Location + Date) */
+.student-card-details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Pushes the details to the bottom of the card body */
+  color: var(--student-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.student-card-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Small SVG Icons (Pin and Calendar) */
+.student-icon {
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+/* Bottom Row (Arrow) */
+.student-card-bottom-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* The Right Arrow Icon */
+.student-arrow-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: var(--student-muted);
+  stroke-width: 2;
+  fill: none;
 }
 
 /* Narrow tablet layout: stacks form and tab grids for readability. */
@@ -657,8 +803,7 @@
     flex-direction: column;
   }
 
-  .student-stat-grid,
-  .student-university-grid {
+  .student-stat-grid{
     grid-template-columns: 1fr;
   }
 
@@ -669,5 +814,16 @@
   .student-subject-row .student-icon-button,
   .student-button {
     width: 100%;
+  }
+  .student-university-card.is-horizontal {
+    flex-direction: column;
+  }
+  
+  .student-university-card.is-horizontal .student-university-media {
+    flex: none;
+    width: 100%;
+    height: 180px; /* Give the image a fixed height on mobile */
+    border-right: none;
+    border-bottom: 1px solid var(--student-border);
   }
 }
