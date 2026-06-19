@@ -1,6 +1,5 @@
 /**
  * Frontend authentication service prepared for Supabase Auth.
- * Complete form integration will be implemented in a later phase.
  */
 import { supabase } from "./supabaseClient.js";
 
@@ -12,21 +11,42 @@ const assertSupabaseConfigured = () => {
 
 export async function registerWithEmail(email, password) {
   assertSupabaseConfigured();
-  return supabase.auth.signUp({ email, password });
+
+  return supabase.auth.signUp({
+    email,
+    password,
+  });
 }
 
 export async function loginWithEmail(email, password) {
   assertSupabaseConfigured();
-  return supabase.auth.signInWithPassword({ email, password });
+
+  return supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+}
+
+export async function loginWithGoogle() {
+  assertSupabaseConfigured();
+
+  return supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: window.location.origin,
+    },
+  });
 }
 
 export async function logout() {
   assertSupabaseConfigured();
+
   return supabase.auth.signOut();
 }
 
 export async function getCurrentAccessToken() {
   assertSupabaseConfigured();
+
   const { data, error } = await supabase.auth.getSession();
 
   if (error) {
@@ -34,4 +54,19 @@ export async function getCurrentAccessToken() {
   }
 
   return data.session?.access_token || null;
+}
+
+export async function getCurrentUser() {
+  assertSupabaseConfigured();
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error) {
+    throw error;
+  }
+
+  return user;
 }
