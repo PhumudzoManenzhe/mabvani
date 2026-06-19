@@ -855,12 +855,59 @@
   line-height: 1.2;
 }
 
+/* --- Dynamic Countdown Indicator --- */
+
+.student-card-countdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Base dot style */
+.student-status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--student-muted); /* Fallback grey */
+  flex-shrink: 0;
+}
+
+/* Color logic using your template variables */
+.student-status-dot.success {
+  background: var(--student-success); /* Green for > 50% */
+  box-shadow: 0 0 8px var(--student-success); /* Adds a nice subtle glow */
+}
+
+.student-status-dot.warning {
+  background: var(--student-warning); /* Yellowish/Orange for <= 50% */
+  box-shadow: 0 0 8px var(--student-warning);
+}
+
+.student-status-dot.danger {
+  background: var(--student-danger); /* Red for <= 10% */
+  box-shadow: 0 0 8px var(--student-danger);
+}
+
+.student-status-dot.neutral {
+  background: var(--student-muted); /* Grey for TBA or not open yet */
+}
+
+/* Text styling */
+.student-countdown-text {
+  color: var(--student-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 /* Make sure it drops down a little bit more on small mobile phones */
 @media (max-width: 560px) {
   .student-card-header-row .student-title {
     font-size: 1.35rem; 
   }
 }
+
 
 /* Narrow tablet layout: stacks form and tab grids for readability. */
 @media (max-width: 760px) {
