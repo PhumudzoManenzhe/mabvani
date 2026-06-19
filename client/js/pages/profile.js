@@ -20,13 +20,13 @@ const sections = document.querySelectorAll("section");
 
 // Click tab → scroll to section
 tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
+    tab.addEventListener("click", (e) => {
 
-        // Update active tab immediately
+        e.preventDefault();
+
         tabs.forEach(t => t.classList.remove("is-active"));
         tab.classList.add("is-active");
 
-        // Scroll to matching section
         const section = document.getElementById(tab.dataset.target);
 
         if (section) {

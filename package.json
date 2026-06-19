@@ -10,5 +10,8 @@
     "test:coverage": "npm --prefix server run test:coverage",
     "check:syntax": "node scripts/check-js-syntax.js",
     "dev:client": "node scripts/serve-client.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2"
   }
 }

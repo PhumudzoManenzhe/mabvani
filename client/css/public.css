@@ -362,8 +362,42 @@
 /* Google button: reserves a full-width provider action for later auth wiring. */
 .auth-google {
   width: 100%;
-  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+
 }
+.auth-google img{
+  width: 18px;
+  height: 18px;
+  color: currentColor;
+}
+.auth-google span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*Apple Button*/
+/*.auth-apple {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.auth-apple span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-apple img {
+  width: 18px;
+  height: 18px;
+  color: currentColor;
+}*/
 
 /* Auth divider: separates provider auth from email auth. */
 .auth-divider {
