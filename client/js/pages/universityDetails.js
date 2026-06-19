@@ -97,7 +97,7 @@ function renderUniversity(university) {
   setText("[data-university-fee]", university.applicationFee || "R100");
   setText("[data-university-closing-date]", university.application.closeDate || "TBA");
   setText("[data-university-location]", `${university.city}, ${university.province}`);
-  setText("[data-university-type]", university.type);
+  // setText("[data-university-type]", university.type);
   setText("[data-university-description]", getUniversityDescription(university));
   setText("[data-university-opening]", university.application.openLabel);
   setText("[data-university-closing]", university.application.closeLabel);

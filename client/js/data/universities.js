@@ -20,6 +20,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@cput.ac.za",
     website: "https://www.cput.ac.za",
     prospectusUrl: "https://www.cput.ac.za/study-at-cput/undergraduate/prospectus",
+    applicationFee: "R100",
     application: {
       openLabel: "11 May 2026",
       openDate: "2026-05-11",
@@ -43,6 +44,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@cut.ac.za",
     website: "https://www.cut.ac.za",
     prospectusUrl: "",
+    applicationFee: "Free",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -66,6 +68,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@dut.ac.za",
     website: "https://www.dut.ac.za",
     prospectusUrl: "https://www.dut.ac.za/wp-content/uploads/prospective_and_current_students/entry_requirements.pdf",
+    applicationFee: "R250 (CAO)",
     application: {
       openLabel: "1 March 2026",
       openDate: "2026-03-01",
@@ -89,6 +92,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@mut.ac.za",
     website: "https://www.mut.ac.za",
     prospectusUrl: "https://schoolhive.co.za/wp-content/uploads/2025/06/Mangosuthu-University-of-Technology-MUT-2027.pdf",
+    applicationFee: "R250 (CAO)",
     application: {
       openLabel: "1 March 2026",
       openDate: "2026-03-01",
@@ -112,6 +116,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@mandela.ac.za",
     website: "https://www.mandela.ac.za",
     prospectusUrl: "https://www.mandela.ac.za/www-new/media/Store/documents/StudyAtMandela/QuickGuides/Apply/NMU-Z-CARD-UNDERGRAD-PROGRAMME_DIGITAL-FA.pdf",
+    applicationFee: "Free",
     application: {
       openLabel: "13 April 2026",
       openDate: "2026-04-13",
@@ -135,6 +140,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@nwu.ac.za",
     website: "https://www.nwu.ac.za",
     prospectusUrl: "https://studies.nwu.ac.za/sites/studies.nwu.ac.za/files/files/undergrad/2027-Grade-12-prospectus.pdf",
+    applicationFee: "Free",
     application: {
       openLabel: "1 June 2026",
       openDate: "2026-06-01",
@@ -158,6 +164,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "registrar@ru.ac.za",
     website: "https://www.ru.ac.za",
     prospectusUrl: "https://www.ru.ac.za/media/rhodesuniversity/content/registrar/documents/information/studentrecruitment/RU_READY_Undergraduate_Prospectus_2026_DIGITAL_A5_Landscape_24pp_18Mar2026.pdf",
+    applicationFee: "R100",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -181,6 +188,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@smu.ac.za",
     website: "https://www.smu.ac.za",
     prospectusUrl: "https://www.smu.ac.za/3d-flip-book/smu-prospectus-2026_2027/",
+    applicationFee: "R200",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -204,6 +212,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@spu.ac.za",
     website: "https://www.spu.ac.za",
     prospectusUrl: "https://indd.adobe.com/view/57eda609-9efc-43e8-b806-791d2e347328",
+    applicationFee: "Free",
     application: {
       openLabel: "1 May 2026",
       openDate: "2026-05-01",
@@ -227,6 +236,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@sun.ac.za",
     website: "https://www.sun.ac.za",
     prospectusUrl: "https://files.su.ac.za/public/undergraduate-maties/documents/2026-01/su-voorgraadse-prospektus-2027.pdf",
+    applicationFee: "R100",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -250,6 +260,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "general@tut.ac.za",
     website: "https://www.tut.ac.za",
     prospectusUrl: "https://devwww.tut.ac.za/media/tshwane-interim/site-content/documents/First-Year-Course_Information.pdf",
+    applicationFee: "R240",
     application: {
       openLabel: "3 April 2026",
       openDate: "2026-04-03",
@@ -273,6 +284,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "admissions@uct.ac.za",
     website: "https://www.uct.ac.za",
     prospectusUrl: "https://uct.ac.za/sites/default/files/media/documents/2027-uct-undergraduate-prospectus-1-april-2026.pdf",
+    applicationFee: "R100",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -296,6 +308,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@ufh.ac.za",
     website: "https://www.ufh.ac.za",
     prospectusUrl: "https://www.ufh.ac.za/wp-content/uploads/2026/01/GENERAL-PROSPECTUS-2026.pdf",
+    applicationFee: "R120",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -319,6 +332,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "myfuture@uj.ac.za",
     website: "https://www.uj.ac.za",
     prospectusUrl: "https://www.uj.ac.za/wp-content/uploads/2026/03/uj_prospectus2027_24-march-2027-final.pdf",
+    applicationFee: "Free",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -342,6 +356,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "enquiries@ukzn.ac.za",
     website: "https://www.ukzn.ac.za",
     prospectusUrl: "https://applications.ukzn.ac.za/wp-content/uploads/2026/05/2027-Undergrad.pdf",
+    applicationFee: "R250 (CAO)",
     application: {
       openLabel: "1 March 2026",
       openDate: "2026-03-01",
@@ -365,6 +380,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@ul.ac.za",
     website: "https://www.ul.ac.za",
     prospectusUrl: "https://www.ul.ac.za/wp-content/uploads/2025/03/Undergraduate-Prospectus-2027.pdf",
+    applicationFee: "R200",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -388,6 +404,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@ump.ac.za",
     website: "https://www.ump.ac.za",
     prospectusUrl: "https://www.ump.ac.za/getattachment/Study-with-us/Application-Process/Online-Applications/Undergraduate-Programmes.pdf.aspx?lang=en-US",
+    applicationFee: "R150",
     application: {
       openLabel: "1 June 2026",
       openDate: "2026-06-01",
@@ -411,6 +428,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@up.ac.za",
     website: "https://www.up.ac.za",
     prospectusUrl: "https://drupalwebprod-files.up.ac.za/Public/2026-01/UP_UG%20Prospectus%202027_NSC-IEB_DevV5_web_0.pdf?VersionId=mFTqP2HthIDn48ISjWf4b4g6CtdE6beU",
+    applicationFee: "R300",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -434,6 +452,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "study-info@unisa.ac.za",
     website: "https://www.unisa.ac.za",
     prospectusUrl: "https://www.unisa.ac.za/static/corporate_web/Content/Apply%20for%20admission/Undergraduate/Documents/Unisa-follow-on%20qualifications-per-college-updated-2026_updated.pdf",
+    applicationFee: "R140",
     application: {
       openLabel: "August 2026, expected",
       openDate: "",
@@ -457,6 +476,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@ufs.ac.za",
     website: "https://www.ufs.ac.za",
     prospectusUrl: "https://www.ufs.ac.za/docs/librariesprovider44/prospectus/ug-prospectus-2027.pdf?sfvrsn=49a7fa20_3",
+    applicationFee: "Free",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -480,6 +500,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "admissions@uwc.ac.za",
     website: "https://www.uwc.ac.za",
     prospectusUrl: "",
+    applicationFee: "Free",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -503,6 +524,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "ask.wits@wits.ac.za",
     website: "https://www.wits.ac.za",
     prospectusUrl: "https://www.wits.ac.za/media/wits-university/study/undergraduate/documents/2027-Guide-for-Undergrad-Applicants.pdf",
+    applicationFee: "R100",
     application: {
       openLabel: "1 March 2026",
       openDate: "2026-03-01",
@@ -526,6 +548,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@univen.ac.za",
     website: "https://www.univen.ac.za",
     prospectusUrl: "https://www.univen.ac.za/wp-content/uploads/2026/03/2027-Univen-Undergraduate-Prospectus.pdf",
+    applicationFee: "R100",
     application: {
       openLabel: "1 May 2026",
       openDate: "2026-05-01",
@@ -549,6 +572,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@unizulu.ac.za",
     website: "https://www.unizulu.ac.za",
     prospectusUrl: "",
+    applicationFee: "R250 (CAO)",
     application: {
       openLabel: "1 March 2026",
       openDate: "2026-03-01",
@@ -572,6 +596,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "admissions@vut.ac.za",
     website: "https://www.vut.ac.za",
     prospectusUrl: "https://vut.ac.za/wp-content/uploads/2025/03/2025-GENERAL-PROSPECTUS.pdf",
+    applicationFee: "R100",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
@@ -595,6 +620,7 @@ export const UNIVERSITIES = Object.freeze([
     email: "info@wsu.ac.za",
     website: "https://www.wsu.ac.za",
     prospectusUrl: "https://www.wsu.ac.za/index.php?option=com_edocman&view=category&layout=table&id=31&Itemid=650&lang=en",
+    applicationFee: "Free",
     application: {
       openLabel: "1 April 2026",
       openDate: "2026-04-01",
