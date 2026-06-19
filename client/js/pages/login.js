@@ -4,10 +4,7 @@
  */
 
 import { setCurrentPage } from "../utils/dom.js";
-import {
-  loginWithEmail,
-  loginWithGoogle,
-} from "../auth/authService.js";
+import { loginWithEmail, loginWithGoogle } from "../auth/authService.js";
 
 export const page = Object.freeze({
   id: "login",
@@ -36,10 +33,7 @@ loginForm?.addEventListener("submit", async (event) => {
   }
 
   try {
-    const { data, error } = await loginWithEmail(
-      email,
-      password
-    );
+    const { data, error } = await loginWithEmail(email, password);
 
     if (error) {
       throw error;
@@ -65,6 +59,8 @@ googleButton?.addEventListener("click", async () => {
     if (error) {
       throw error;
     }
+
+    window.location.href = "../../pages/student/dashboard.html";
   } catch (error) {
     console.error(error);
     alert(error.message);

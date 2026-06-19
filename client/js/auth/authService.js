@@ -9,12 +9,20 @@ const assertSupabaseConfigured = () => {
   }
 };
 
-export async function registerWithEmail(email, password) {
+export async function registerWithEmail(user) {
   assertSupabaseConfigured();
 
   return supabase.auth.signUp({
-    email,
-    password,
+    email: user.email,
+    password: user.password,
+
+    options: {
+      data: {
+        first_name: user.first_name,
+        middle_name: user.middle_name,
+        last_name: user.last_name,
+      },
+    },
   });
 }
 
