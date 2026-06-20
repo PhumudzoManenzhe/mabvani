@@ -1,39 +1,1112 @@
-<!DOCTYPE html>
-<html lang="en-ZA">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | UniApply SA</title>
-    <link rel="stylesheet" href="../../css/variables.css">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="../../css/layouts.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <link rel="stylesheet" href="../../css/admin.css">
-    <link rel="stylesheet" href="../../css/responsive.css">
-</head>
-<body class="admin-page">
-  <header class="site-header">
-    <div class="layout-container header-inner">
-      <a class="brand-link" href="../../index.html">UniApply SA</a>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <link href="https://media.base44.com/images/public/6a36dfe07280f0fdb917656e/14e698836_logo.png" rel="icon" type="image/svg+xml">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="/manifest.json" rel="manifest">
+  <title>
+   Applications | UniApply SA
+  </title>
+  <script crossorigin="" src="/assets/index-BhP7CThd.js" type="module">
+  </script>
+  
+  <script type="module">
+   if (window.self === window.top) {
+  let lastPath = "";
+  function getPageNameFromPath(path) {
+    const segments = path.split("/").filter(Boolean);
+    return segments[0] || null;
+  }
+  function trackPageView() {
+    const path = window.location.pathname;
+    if (path === lastPath) return;
+    lastPath = path;
+    const pageName = getPageNameFromPath(path) || "home";
+    const appId = "6a36dfe07280f0fdb917656e";
+    if (!appId) return;
+    fetch(`/api/app-logs/${appId}/log-user-in-app/${pageName}`, {
+      method: "POST",
+    }).catch(() => {});
+  }
+  const originalPushState = history.pushState.bind(history);
+  history.pushState = function (...args) {
+    originalPushState(...args);
+    trackPageView();
+  };
+  const originalReplaceState = history.replaceState.bind(history);
+  history.replaceState = function (...args) {
+    originalReplaceState(...args);
+    trackPageView();
+  };
+  window.addEventListener("popstate", trackPageView);
+  trackPageView();
+}
+  </script>
+ 
+  <script src="https://cdn.tailwindcss.com"></script>
+ <style>
+      @keyframes badge-spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .badge-spinner {
+        animation: badge-spin 1s linear infinite;
+      }
+      @keyframes base44-fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes base44-scale-in {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style></head>
+<body>
 
-      <nav class="site-nav" aria-label="Admin navigation">
-        <a href="../../index.html">Home</a>
-        <a href="../../pages/admin/dashboard.html">Dashboard</a>
-        <a href="../../pages/admin/applications.html">Applications</a>
-        <a href="../../pages/admin/students.html">Students</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="layout-container page-shell">
-    <section class="placeholder-section" aria-labelledby="page-title">
-      <p class="eyebrow">Admin workspace</p>
-      <h1 id="page-title">Admin Dashboard</h1>
-      <p>Administrative monitoring will be implemented in a later phase.</p>
-    </section>
-  </main>
-
-  <script type="module" src="../../js/pages/adminDashboard.js"></script>
+    <div id="root">
+        <div class="flex min-h-screen bg-slate-50">
+        <aside class="hidden lg:flex flex-col w-60 bg-slate-900 h-screen sticky top-0 shrink-0">
+        <div class="px-6 py-5 border-b border-slate-700/60">
+            <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center shrink-0">
+            <svg class="lucide lucide-graduation-cap text-white" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z">
+            </path>
+            <path d="M22 10v6">
+            </path>
+            <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5">
+            </path>
+            </svg>
+            </div>
+            <div>
+            <p class="text-sm font-bold text-white">
+            UniApply SA
+            </p>
+            <p class="text-xs text-slate-400">
+            Admin Portal
+            </p>
+            </div>
+            </div>
+        </div>
+        <nav class="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-600 text-white" href="/">
+            <svg class="lucide lucide-layout-dashboard shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <rect height="9" rx="1" width="7" x="3" y="3">
+            </rect>
+            <rect height="5" rx="1" width="7" x="14" y="3">
+            </rect>
+            <rect height="9" rx="1" width="7" x="14" y="12">
+            </rect>
+            <rect height="5" rx="1" width="7" x="3" y="16">
+            </rect>
+            </svg>
+            Dashboard
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/applications">
+            <svg class="lucide lucide-file-text shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z">
+            </path>
+            <path d="M14 2v4a2 2 0 0 0 2 2h4">
+            </path>
+            <path d="M10 9H8">
+            </path>
+            <path d="M16 13H8">
+            </path>
+            <path d="M16 17H8">
+            </path>
+            </svg>
+            Applications
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/students">
+                <svg class="lucide lucide-users shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            Students
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/universities">
+            <svg class="lucide lucide-graduation-cap shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z">
+            </path>
+            <path d="M22 10v6">
+            </path>
+            <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5">
+            </path>
+            </svg>
+            Universities
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/programmes">
+            <svg class="lucide lucide-book-open shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 7v14">
+            </path>
+            <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+            </path>
+            </svg>
+            Programmes
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/aps-calculator">
+            <svg class="lucide lucide-calculator shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <rect height="20" rx="2" width="16" x="4" y="2">
+            </rect>
+            <line x1="8" x2="16" y1="6" y2="6">
+            </line>
+            <line x1="16" x2="16" y1="14" y2="18">
+            </line>
+            <path d="M16 10h.01">
+            </path>
+            <path d="M12 10h.01">
+            </path>
+            <path d="M8 10h.01">
+            </path>
+            <path d="M12 14h.01">
+            </path>
+            <path d="M8 14h.01">
+            </path>
+            <path d="M12 18h.01">
+            </path>
+            <path d="M8 18h.01">
+            </path>
+            </svg>
+            APS Calculator
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/payments">
+            <svg class="lucide lucide-dollar-sign shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" x2="12" y1="2" y2="22">
+            </line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6">
+            </path>
+            </svg>
+            Payments
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/offers">
+            <svg class="lucide lucide-gift shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <rect height="4" rx="1" width="18" x="3" y="8">
+            </rect>
+            <path d="M12 8v13">
+            </path>
+            <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7">
+            </path>
+            <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5">
+            </path>
+            </svg>
+            Offers
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/communication">
+            <svg class="lucide lucide-message-square shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+            </path>
+            </svg>
+            Communication
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/reports">
+            <svg class="lucide lucide-chart-no-axes-column shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <line x1="18" x2="18" y1="20" y2="10">
+            </line>
+            <line x1="12" x2="12" y1="20" y2="4">
+            </line>
+            <line x1="6" x2="6" y1="20" y2="14">
+            </line>
+            </svg>
+            Reports
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/users">
+            <svg class="lucide lucide-shield-check shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
+            </path>
+            <path d="m9 12 2 2 4-4">
+            </path>
+            </svg>
+            User Management
+            </a>
+            <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/audit-logs">
+            <svg class="lucide lucide-clipboard-list shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+            <rect height="4" rx="1" ry="1" width="8" x="8" y="2">
+            </rect>
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+            </path>
+            <path d="M12 11h4">
+            </path>
+            <path d="M12 16h4">
+            </path>
+            <path d="M8 11h.01">
+            </path>
+            <path d="M8 16h.01">
+            </path>
+            </svg>
+            Audit Logs
+            </a>
+        </nav>
+        </aside>
+        <div class="lg:hidden fixed top-3 left-3 z-50">
+        <button class="p-2 bg-slate-900 text-white rounded-lg shadow-lg">
+            <svg class="lucide lucide-menu" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4" x2="20" y1="12" y2="12">
+            </line>
+            <line x1="4" x2="20" y1="6" y2="6">
+            </line>
+            <line x1="4" x2="20" y1="18" y2="18">
+            </line>
+            </svg>
+        </button>
+        </div>
+        <main class="flex-1 min-w-0 overflow-x-hidden">
+        <div class="p-4 lg:p-6 space-y-5">
+            <div>
+            <h1 class="text-2xl font-bold text-foreground">
+            Dashboard
+            </h1>
+            <p class="text-sm text-muted-foreground mt-0.5">
+            UniApply SA — 2024 Application Cycle Overview
+            </p>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white rounded-xl border border-border p-5">
+            <div class="flex items-start justify-between">
+            <div>
+                <p class="text-sm text-muted-foreground">
+                Total Applications
+                </p>
+                <p class="text-2xl font-bold text-foreground mt-1">
+                15
+                </p>
+                <p class="text-xs text-muted-foreground mt-0.5">
+                +8 this month
+                </p>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center shrink-0">
+                <svg class="lucide lucide-file-text text-white" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z">
+                </path>
+                <path d="M14 2v4a2 2 0 0 0 2 2h4">
+                </path>
+                <path d="M10 9H8">
+                </path>
+                <path d="M16 13H8">
+                </path>
+                <path d="M16 17H8">
+                </path>
+                </svg>
+            </div>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-5">
+            <div class="flex items-start justify-between">
+            <div>
+                <p class="text-sm text-muted-foreground">
+                Students
+                </p>
+                <p class="text-2xl font-bold text-foreground mt-1">
+                12
+                </p>
+                <p class="text-xs text-muted-foreground mt-0.5">
+                Registered profiles
+                </p>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center shrink-0">
+                <svg class="lucide lucide-users text-white" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2">
+                </path>
+                <circle cx="9" cy="7" r="4">
+                </circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87">
+                </path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75">
+                </path>
+                </svg>
+            </div>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-5">
+            <div class="flex items-start justify-between">
+            <div>
+                <p class="text-sm text-muted-foreground">
+                Universities
+                </p>
+                <p class="text-2xl font-bold text-foreground mt-1">
+                8
+                </p>
+                <p class="text-xs text-muted-foreground mt-0.5">
+                Partner institutions
+                </p>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-green-600 flex items-center justify-center shrink-0">
+                <svg class="lucide lucide-graduation-cap text-white" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z">
+                </path>
+                <path d="M22 10v6">
+                </path>
+                <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5">
+                </path>
+                </svg>
+            </div>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-5">
+            <div class="flex items-start justify-between">
+            <div>
+                <p class="text-sm text-muted-foreground">
+                Revenue
+                </p>
+                <p class="text-2xl font-bold text-foreground mt-1">
+                R1 400
+                </p>
+                <p class="text-xs text-muted-foreground mt-0.5">
+                Application fees
+                </p>
+            </div>
+            <div class="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center shrink-0">
+                <svg class="lucide lucide-dollar-sign text-white" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                <line x1="12" x2="12" y1="2" y2="22">
+                </line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6">
+                </path>
+                </svg>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="grid grid-cols-3 lg:grid-cols-6 gap-3">
+            <div class="bg-white rounded-xl border border-border p-4 text-center">
+            <p class="text-2xl font-bold text-foreground">
+            1
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">
+            Draft
+            </p>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-4 text-center">
+            <p class="text-2xl font-bold text-foreground">
+            4
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">
+            Submitted
+            </p>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-4 text-center">
+            <p class="text-2xl font-bold text-foreground">
+            4
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">
+            Under Review
+            </p>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-4 text-center">
+            <p class="text-2xl font-bold text-foreground">
+            2
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">
+            Cond. Offer
+            </p>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-4 text-center">
+            <p class="text-2xl font-bold text-foreground">
+            2
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">
+            Accepted
+            </p>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-4 text-center">
+            <p class="text-2xl font-bold text-foreground">
+            2
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">
+            Rejected
+            </p>
+            </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <div class="bg-white rounded-xl border border-border p-5">
+            <h3 class="font-semibold text-foreground mb-4">
+            Monthly Application Trends
+            </h3>
+            <div class="recharts-responsive-container" style="width: 100%; height: 220px; min-width: 0px;">
+            <div class="recharts-wrapper" style="position: relative; cursor: default; width: 100%; height: 100%; max-height: 220px; max-width: 415px;">
+                <svg class="recharts-surface" height="220" style="width: 100%; height: 100%;" viewbox="0 0 415 220" width="415">
+                <title>
+                </title>
+                <desc>
+                </desc>
+                <defs>
+                <clippath id="recharts1-clip">
+                <rect height="162" width="345" x="65" y="5">
+                </rect>
+                </clippath>
+                </defs>
+                <g class="recharts-cartesian-grid">
+                <g class="recharts-cartesian-grid-horizontal">
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="65" x2="410" y="5" y1="167" y2="167">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="65" x2="410" y="5" y1="126.5" y2="126.5">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="65" x2="410" y="5" y1="86" y2="86">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="65" x2="410" y="5" y1="45.5" y2="45.5">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="65" x2="410" y="5" y1="5" y2="5">
+                </line>
+                </g>
+                <g class="recharts-cartesian-grid-vertical">
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="65" x2="65" y="5" y1="5" y2="167">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="122.5" x2="122.5" y="5" y1="5" y2="167">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="180" x2="180" y="5" y1="5" y2="167">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="237.5" x2="237.5" y="5" y1="5" y2="167">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="295" x2="295" y="5" y1="5" y2="167">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="352.5" x2="352.5" y="5" y1="5" y2="167">
+                </line>
+                <line fill="none" height="162" stroke="#f1f5f9" stroke-dasharray="3 3" width="345" x="65" x1="410" x2="410" y="5" y1="5" y2="167">
+                </line>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis">
+                <g class="recharts-cartesian-axis-ticks">
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="345" x="65" y="175">
+                    <tspan dy="0.71em" x="65">
+                    Apr
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="345" x="122.5" y="175">
+                    <tspan dy="0.71em" x="122.5">
+                    May
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="345" x="180" y="175">
+                    <tspan dy="0.71em" x="180">
+                    Jun
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="345" x="237.5" y="175">
+                    <tspan dy="0.71em" x="237.5">
+                    Jul
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="345" x="295" y="175">
+                    <tspan dy="0.71em" x="295">
+                    Aug
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="345" x="352.5" y="175">
+                    <tspan dy="0.71em" x="352.5">
+                    Sep
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="345" x="406.4437494277954" y="175">
+                    <tspan dy="0.71em" x="406.4437494277954">
+                    Oct
+                    </tspan>
+                    </text>
+                </g>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis">
+                <g class="recharts-cartesian-axis-ticks">
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="162" orientation="left" stroke="none" text-anchor="end" width="60" x="57" y="167">
+                    <tspan dy="0.355em" x="57">
+                    0
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="162" orientation="left" stroke="none" text-anchor="end" width="60" x="57" y="126.5">
+                    <tspan dy="0.355em" x="57">
+                    30
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="162" orientation="left" stroke="none" text-anchor="end" width="60" x="57" y="86">
+                    <tspan dy="0.355em" x="57">
+                    60
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="162" orientation="left" stroke="none" text-anchor="end" width="60" x="57" y="45.5">
+                    <tspan dy="0.355em" x="57">
+                    90
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="162" orientation="left" stroke="none" text-anchor="end" width="60" x="57" y="8.25">
+                    <tspan dy="0.355em" x="57">
+                    120
+                    </tspan>
+                    </text>
+                </g>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-line">
+                <path class="recharts-curve recharts-line-curve" d="M65,150.8C84.167,143.713,103.333,136.625,122.5,129.2C141.667,121.775,160.833,115.025,180,106.25C199.167,97.475,218.333,91.625,237.5,76.55C256.667,61.475,275.833,15.8,295,15.8C314.167,15.8,333.333,31.325,352.5,46.85C371.667,62.375,390.833,85.663,410,108.95" fill="none" height="162" name="Applications" stroke="#2563EB" stroke-width="2.5" width="345">
+                </path>
+                <g class="recharts-layer">
+                </g>
+                <g class="recharts-layer recharts-line-dots">
+                <circle class="recharts-dot recharts-line-dot" cx="65" cy="150.8" fill="#fff" height="162" name="Applications" r="3" stroke="#2563EB" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="122.5" cy="129.2" fill="#fff" height="162" name="Applications" r="3" stroke="#2563EB" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="180" cy="106.25" fill="#fff" height="162" name="Applications" r="3" stroke="#2563EB" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="237.5" cy="76.55" fill="#fff" height="162" name="Applications" r="3" stroke="#2563EB" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="295" cy="15.799999999999997" fill="#fff" height="162" name="Applications" r="3" stroke="#2563EB" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="352.5" cy="46.849999999999994" fill="#fff" height="162" name="Applications" r="3" stroke="#2563EB" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="410" cy="108.94999999999999" fill="#fff" height="162" name="Applications" r="3" stroke="#2563EB" stroke-width="2.5" width="345">
+                </circle>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-line">
+                <path class="recharts-curve recharts-line-curve" d="M65,162.95C84.167,160.813,103.333,158.675,122.5,156.2C141.667,153.725,160.833,151.25,180,148.1C199.167,144.95,218.333,142.7,237.5,137.3C256.667,131.9,275.833,115.7,295,115.7C314.167,115.7,333.333,121.325,352.5,126.5C371.667,131.675,390.833,139.213,410,146.75" fill="none" height="162" name="Accepted" stroke="#059669" stroke-width="2.5" width="345">
+                </path>
+                <g class="recharts-layer">
+                </g>
+                <g class="recharts-layer recharts-line-dots">
+                <circle class="recharts-dot recharts-line-dot" cx="65" cy="162.95" fill="#fff" height="162" name="Accepted" r="3" stroke="#059669" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="122.5" cy="156.20000000000002" fill="#fff" height="162" name="Accepted" r="3" stroke="#059669" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="180" cy="148.1" fill="#fff" height="162" name="Accepted" r="3" stroke="#059669" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="237.5" cy="137.29999999999998" fill="#fff" height="162" name="Accepted" r="3" stroke="#059669" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="295" cy="115.7" fill="#fff" height="162" name="Accepted" r="3" stroke="#059669" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="352.5" cy="126.5" fill="#fff" height="162" name="Accepted" r="3" stroke="#059669" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="410" cy="146.75" fill="#fff" height="162" name="Accepted" r="3" stroke="#059669" stroke-width="2.5" width="345">
+                </circle>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-line">
+                <path class="recharts-curve recharts-line-curve" d="M65,164.3C84.167,163.063,103.333,161.825,122.5,160.25C141.667,158.675,160.833,156.65,180,154.85C199.167,153.05,218.333,152.15,237.5,149.45C256.667,146.75,275.833,138.65,295,138.65C314.167,138.65,333.333,140,352.5,142.7C371.667,145.4,390.833,150.8,410,156.2" fill="none" height="162" name="Rejected" stroke="#DC2626" stroke-width="2.5" width="345">
+                </path>
+                <g class="recharts-layer">
+                </g>
+                <g class="recharts-layer recharts-line-dots">
+                <circle class="recharts-dot recharts-line-dot" cx="65" cy="164.3" fill="#fff" height="162" name="Rejected" r="3" stroke="#DC2626" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="122.5" cy="160.25000000000003" fill="#fff" height="162" name="Rejected" r="3" stroke="#DC2626" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="180" cy="154.85" fill="#fff" height="162" name="Rejected" r="3" stroke="#DC2626" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="237.5" cy="149.45" fill="#fff" height="162" name="Rejected" r="3" stroke="#DC2626" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="295" cy="138.65" fill="#fff" height="162" name="Rejected" r="3" stroke="#DC2626" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="352.5" cy="142.7" fill="#fff" height="162" name="Rejected" r="3" stroke="#DC2626" stroke-width="2.5" width="345">
+                </circle>
+                <circle class="recharts-dot recharts-line-dot" cx="410" cy="156.20000000000002" fill="#fff" height="162" name="Rejected" r="3" stroke="#DC2626" stroke-width="2.5" width="345">
+                </circle>
+                </g>
+                </g>
+                </svg>
+                <div class="recharts-legend-wrapper" style="position: absolute; width: 405px; height: auto; left: 5px; bottom: 5px; font-size: 12px;">
+                <ul class="recharts-default-legend" style="padding: 0px; margin: 0px; text-align: center;">
+                <li class="recharts-legend-item legend-item-0" style="display: inline-block; margin-right: 10px;">
+                <svg class="recharts-surface" height="8" style="display: inline-block; vertical-align: middle; margin-right: 4px;" viewbox="0 0 32 32" width="8">
+                    <title>
+                    </title>
+                    <desc>
+                    </desc>
+                    <path class="recharts-symbols" cx="16" cy="16" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0" fill="#2563EB" transform="translate(16, 16)">
+                    </path>
+                </svg>
+                <span class="recharts-legend-item-text" style="color: rgb(37, 99, 235);">
+                    Applications
+                </span>
+                </li>
+                <li class="recharts-legend-item legend-item-1" style="display: inline-block; margin-right: 10px;">
+                <svg class="recharts-surface" height="8" style="display: inline-block; vertical-align: middle; margin-right: 4px;" viewbox="0 0 32 32" width="8">
+                    <title>
+                    </title>
+                    <desc>
+                    </desc>
+                    <path class="recharts-symbols" cx="16" cy="16" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0" fill="#059669" transform="translate(16, 16)">
+                    </path>
+                </svg>
+                <span class="recharts-legend-item-text" style="color: rgb(5, 150, 105);">
+                    Accepted
+                </span>
+                </li>
+                <li class="recharts-legend-item legend-item-2" style="display: inline-block; margin-right: 10px;">
+                <svg class="recharts-surface" height="8" style="display: inline-block; vertical-align: middle; margin-right: 4px;" viewbox="0 0 32 32" width="8">
+                    <title>
+                    </title>
+                    <desc>
+                    </desc>
+                    <path class="recharts-symbols" cx="16" cy="16" d="M16,0A16,16,0,1,1,-16,0A16,16,0,1,1,16,0" fill="#DC2626" transform="translate(16, 16)">
+                    </path>
+                </svg>
+                <span class="recharts-legend-item-text" style="color: rgb(220, 38, 38);">
+                    Rejected
+                </span>
+                </li>
+                </ul>
+                </div>
+                <div class="recharts-tooltip-wrapper recharts-tooltip-wrapper-right recharts-tooltip-wrapper-top" style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px; transform: translate(150.333px, 5px);" tabindex="-1">
+                <div class="recharts-default-tooltip" style="margin: 0px; padding: 10px; background-color: rgb(255, 255, 255); border: 1px solid rgb(226, 232, 240); white-space: nowrap; border-radius: 8px; font-size: 12px;">
+                <p class="recharts-tooltip-label" style="margin: 0px;">
+                May
+                </p>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl border border-border p-5">
+            <h3 class="font-semibold text-foreground mb-4">
+            Applications by University
+            </h3>
+            <div class="recharts-responsive-container" style="width: 100%; height: 220px; min-width: 0px;">
+            <div class="recharts-wrapper" style="position: relative; cursor: default; width: 100%; height: 100%; max-height: 220px; max-width: 415px;">
+                <svg class="recharts-surface" height="220" style="width: 100%; height: 100%;" viewbox="0 0 415 220" width="415">
+                <title>
+                </title>
+                <desc>
+                </desc>
+                <defs>
+                <clippath id="recharts8-clip">
+                <rect height="180" width="315" x="95" y="5">
+                </rect>
+                </clippath>
+                </defs>
+                <g class="recharts-cartesian-grid">
+                <g class="recharts-cartesian-grid-vertical">
+                <line fill="none" height="180" stroke="#f1f5f9" stroke-dasharray="3 3" width="315" x="95" x1="95" x2="95" y="5" y1="5" y2="185">
+                </line>
+                <line fill="none" height="180" stroke="#f1f5f9" stroke-dasharray="3 3" width="315" x="95" x1="173.75" x2="173.75" y="5" y1="5" y2="185">
+                </line>
+                <line fill="none" height="180" stroke="#f1f5f9" stroke-dasharray="3 3" width="315" x="95" x1="252.5" x2="252.5" y="5" y1="5" y2="185">
+                </line>
+                <line fill="none" height="180" stroke="#f1f5f9" stroke-dasharray="3 3" width="315" x="95" x1="331.25" x2="331.25" y="5" y1="5" y2="185">
+                </line>
+                <line fill="none" height="180" stroke="#f1f5f9" stroke-dasharray="3 3" width="315" x="95" x1="410" x2="410" y="5" y1="5" y2="185">
+                </line>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis">
+                <g class="recharts-cartesian-axis-ticks">
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="315" x="95" y="193">
+                    <tspan dy="0.71em" x="95">
+                    0
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="315" x="173.75" y="193">
+                    <tspan dy="0.71em" x="173.75">
+                    0.75
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="315" x="252.5" y="193">
+                    <tspan dy="0.71em" x="252.5">
+                    1.5
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="315" x="331.25" y="193">
+                    <tspan dy="0.71em" x="331.25">
+                    2.25
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#94a3b8" font-size="11" height="30" orientation="bottom" stroke="none" text-anchor="middle" width="315" x="410" y="193">
+                    <tspan dy="0.71em" x="410">
+                    3
+                    </tspan>
+                    </text>
+                </g>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis">
+                <g class="recharts-cartesian-axis-ticks">
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#64748b" font-size="10" height="180" orientation="left" stroke="none" text-anchor="end" width="90" x="87" y="20">
+                    <tspan dy="-0.14500000000000002em" x="87">
+                    U. of Cape
+                    </tspan>
+                    <tspan dy="1em" x="87">
+                    Town
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#64748b" font-size="10" height="180" orientation="left" stroke="none" text-anchor="end" width="90" x="87" y="50">
+                    <tspan dy="-0.14500000000000002em" x="87">
+                    U. of
+                    </tspan>
+                    <tspan dy="1em" x="87">
+                    Johannesburg
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#64748b" font-size="10" height="180" orientation="left" stroke="none" text-anchor="end" width="90" x="87" y="80">
+                    <tspan dy="-0.14500000000000002em" x="87">
+                    U. of the
+                    </tspan>
+                    <tspan dy="1em" x="87">
+                    Witwatersrand
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#64748b" font-size="10" height="180" orientation="left" stroke="none" text-anchor="end" width="90" x="87" y="110">
+                    <tspan dy="-0.14500000000000002em" x="87">
+                    Stellenbosch
+                    </tspan>
+                    <tspan dy="1em" x="87">
+                    University
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#64748b" font-size="10" height="180" orientation="left" stroke="none" text-anchor="end" width="90" x="87" y="140">
+                    <tspan dy="-0.14500000000000002em" x="87">
+                    U. of
+                    </tspan>
+                    <tspan dy="1em" x="87">
+                    KwaZulu-Natal
+                    </tspan>
+                    </text>
+                </g>
+                <g class="recharts-layer recharts-cartesian-axis-tick">
+                    <text class="recharts-text recharts-cartesian-axis-tick-value" fill="#64748b" font-size="10" height="180" orientation="left" stroke="none" text-anchor="end" width="90" x="87" y="170">
+                    <tspan dy="-0.14500000000000002em" x="87">
+                    U. of
+                    </tspan>
+                    <tspan dy="1em" x="87">
+                    Pretoria
+                    </tspan>
+                    </text>
+                </g>
+                </g>
+                </g>
+                <g class="recharts-layer recharts-bar">
+                <g class="recharts-layer recharts-bar-rectangles">
+                <g class="recharts-layer">
+                    <g class="recharts-layer recharts-bar-rectangle">
+                    <path class="recharts-rectangle" d="M95,8L 406,8A 4,4,0,0,1,
+                410,12L 410,28A 4,4,0,0,1,
+                406,32L 95,32Z" fill="#2563EB" height="24" name="U. of Cape Town" radius="0,4,4,0" width="315" x="95" y="8">
+                    </path>
+                    </g>
+                    <g class="recharts-layer recharts-bar-rectangle">
+                    <path class="recharts-rectangle" d="M95,38L 406,38A 4,4,0,0,1,
+                410,42L 410,58A 4,4,0,0,1,
+                406,62L 95,62Z" fill="#7C3AED" height="24" name="U. of Johannesburg" radius="0,4,4,0" width="315" x="95" y="38">
+                    </path>
+                    </g>
+                    <g class="recharts-layer recharts-bar-rectangle">
+                    <path class="recharts-rectangle" d="M95,68L 301,68A 4,4,0,0,1,
+                305,72L 305,88A 4,4,0,0,1,
+                301,92L 95,92Z" fill="#059669" height="24" name="U. of the Witwatersrand" radius="0,4,4,0" width="210" x="95" y="68">
+                    </path>
+                    </g>
+                    <g class="recharts-layer recharts-bar-rectangle">
+                    <path class="recharts-rectangle" d="M95,98L 301,98A 4,4,0,0,1,
+                305,102L 305,118A 4,4,0,0,1,
+                301,122L 95,122Z" fill="#D97706" height="24" name="Stellenbosch University" radius="0,4,4,0" width="210" x="95" y="98">
+                    </path>
+                    </g>
+                    <g class="recharts-layer recharts-bar-rectangle">
+                    <path class="recharts-rectangle" d="M95,128L 301,128A 4,4,0,0,1,
+                305,132L 305,148A 4,4,0,0,1,
+                301,152L 95,152Z" fill="#DC2626" height="24" name="U. of KwaZulu-Natal" radius="0,4,4,0" width="210" x="95" y="128">
+                    </path>
+                    </g>
+                    <g class="recharts-layer recharts-bar-rectangle">
+                    <path class="recharts-rectangle" d="M95,158L 196,158A 4,4,0,0,1,
+                200,162L 200,178A 4,4,0,0,1,
+                196,182L 95,182Z" fill="#0891B2" height="24" name="U. of Pretoria" radius="0,4,4,0" width="105" x="95" y="158">
+                    </path>
+                    </g>
+                </g>
+                </g>
+                <g class="recharts-layer">
+                </g>
+                </g>
+                </svg>
+                <div class="recharts-tooltip-wrapper recharts-tooltip-wrapper-right recharts-tooltip-wrapper-bottom" style="visibility: hidden; pointer-events: none; position: absolute; top: 0px; left: 0px; transform: translate(95px, 30px);" tabindex="-1">
+                <div class="recharts-default-tooltip" style="margin: 0px; padding: 10px; background-color: rgb(255, 255, 255); border: 1px solid rgb(226, 232, 240); white-space: nowrap; border-radius: 8px; font-size: 12px;">
+                <p class="recharts-tooltip-label" style="margin: 0px;">
+                U. of Cape Town
+                </p>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl border border-border overflow-hidden">
+            <div class="px-5 py-4 border-b border-border">
+            <h3 class="font-semibold text-foreground">
+            Recent Applications
+            </h3>
+            </div>
+            <div class="overflow-x-auto">
+            <table class="w-full">
+            <thead>
+                <tr class="bg-muted/40 border-b border-border">
+                <th class="text-left text-xs font-semibold text-muted-foreground px-5 py-3">
+                ID
+                </th>
+                <th class="text-left text-xs font-semibold text-muted-foreground px-4 py-3">
+                Student
+                </th>
+                <th class="text-left text-xs font-semibold text-muted-foreground px-4 py-3 hidden md:table-cell">
+                University
+                </th>
+                <th class="text-left text-xs font-semibold text-muted-foreground px-4 py-3 hidden lg:table-cell">
+                Programme
+                </th>
+                <th class="text-right text-xs font-semibold text-muted-foreground px-4 py-3">
+                APS
+                </th>
+                <th class="text-left text-xs font-semibold text-muted-foreground px-4 py-3">
+                Status
+                </th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-border">
+                <tr class="hover:bg-muted/30 transition-colors">
+                <td class="px-5 py-3">
+                <span class="text-xs font-mono text-muted-foreground">
+                APP00001
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <p class="text-sm font-medium text-foreground">
+                Ayanda Nkosi
+                </p>
+                </td>
+                <td class="px-4 py-3 hidden md:table-cell">
+                <span class="text-xs text-muted-foreground">
+                U. of Cape Town
+                </span>
+                </td>
+                <td class="px-4 py-3 hidden lg:table-cell">
+                <span class="text-xs text-muted-foreground">
+                BSc Computer Science
+                </span>
+                </td>
+                <td class="px-4 py-3 text-right">
+                <span class="text-sm font-semibold text-foreground">
+                38
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
+                under review
+                </span>
+                </td>
+                </tr>
+                <tr class="hover:bg-muted/30 transition-colors">
+                <td class="px-5 py-3">
+                <span class="text-xs font-mono text-muted-foreground">
+                APP00002
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <p class="text-sm font-medium text-foreground">
+                Sipho Dlamini
+                </p>
+                </td>
+                <td class="px-4 py-3 hidden md:table-cell">
+                <span class="text-xs text-muted-foreground">
+                U. of the Witwatersrand
+                </span>
+                </td>
+                <td class="px-4 py-3 hidden lg:table-cell">
+                <span class="text-xs text-muted-foreground">
+                BCom Accounting
+                </span>
+                </td>
+                <td class="px-4 py-3 text-right">
+                <span class="text-sm font-semibold text-foreground">
+                42
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                accepted
+                </span>
+                </td>
+                </tr>
+                <tr class="hover:bg-muted/30 transition-colors">
+                <td class="px-5 py-3">
+                <span class="text-xs font-mono text-muted-foreground">
+                APP00003
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <p class="text-sm font-medium text-foreground">
+                Naledi Mokoena
+                </p>
+                </td>
+                <td class="px-4 py-3 hidden md:table-cell">
+                <span class="text-xs text-muted-foreground">
+                Stellenbosch University
+                </span>
+                </td>
+                <td class="px-4 py-3 hidden lg:table-cell">
+                <span class="text-xs text-muted-foreground">
+                BEng Civil Engineering
+                </span>
+                </td>
+                <td class="px-4 py-3 text-right">
+                <span class="text-sm font-semibold text-foreground">
+                35
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">
+                submitted
+                </span>
+                </td>
+                </tr>
+                <tr class="hover:bg-muted/30 transition-colors">
+                <td class="px-5 py-3">
+                <span class="text-xs font-mono text-muted-foreground">
+                APP00004
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <p class="text-sm font-medium text-foreground">
+                Liam van der Berg
+                </p>
+                </td>
+                <td class="px-4 py-3 hidden md:table-cell">
+                <span class="text-xs text-muted-foreground">
+                U. of Cape Town
+                </span>
+                </td>
+                <td class="px-4 py-3 hidden lg:table-cell">
+                <span class="text-xs text-muted-foreground">
+                BSc Data Science
+                </span>
+                </td>
+                <td class="px-4 py-3 text-right">
+                <span class="text-sm font-semibold text-foreground">
+                45
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-purple-100 text-purple-700">
+                conditional offer
+                </span>
+                </td>
+                </tr>
+                <tr class="hover:bg-muted/30 transition-colors">
+                <td class="px-5 py-3">
+                <span class="text-xs font-mono text-muted-foreground">
+                APP00005
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <p class="text-sm font-medium text-foreground">
+                Fatima Jacobs
+                </p>
+                </td>
+                <td class="px-4 py-3 hidden md:table-cell">
+                <span class="text-xs text-muted-foreground">
+                U. of Pretoria
+                </span>
+                </td>
+                <td class="px-4 py-3 hidden lg:table-cell">
+                <span class="text-xs text-muted-foreground">
+                MBChB Medicine
+                </span>
+                </td>
+                <td class="px-4 py-3 text-right">
+                <span class="text-sm font-semibold text-foreground">
+                40
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-yellow-100 text-yellow-700">
+                under review
+                </span>
+                </td>
+                </tr>
+                <tr class="hover:bg-muted/30 transition-colors">
+                <td class="px-5 py-3">
+                <span class="text-xs font-mono text-muted-foreground">
+                APP00006
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <p class="text-sm font-medium text-foreground">
+                Tshepo Sithole
+                </p>
+                </td>
+                <td class="px-4 py-3 hidden md:table-cell">
+                <span class="text-xs text-muted-foreground">
+                U. of Johannesburg
+                </span>
+                </td>
+                <td class="px-4 py-3 hidden lg:table-cell">
+                <span class="text-xs text-muted-foreground">
+                LLB Law
+                </span>
+                </td>
+                <td class="px-4 py-3 text-right">
+                <span class="text-sm font-semibold text-foreground">
+                36
+                </span>
+                </td>
+                <td class="px-4 py-3">
+                <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-red-100 text-red-700">
+                rejected
+                </span>
+                </td>
+                </tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+        </div>
+        </main>
+        </div>
+        <div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]">
+        <div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]">
+        </div>
+        </div>
+        </div>
+ 
 </body>
 </html>
