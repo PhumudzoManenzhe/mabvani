@@ -1,125 +1,395 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-ZA">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your profile | UniApply SA</title>
-  <link rel="stylesheet" href="../../css/variables.css">
-  <link rel="stylesheet" href="../../css/reset.css">
-  <link rel="stylesheet" href="../../css/global.css">
-  <link rel="stylesheet" href="../../css/layouts.css">
-  <link rel="stylesheet" href="../../css/components.css">
-  <link rel="stylesheet" href="../../css/student.css">
-  <link rel="stylesheet" href="../../css/responsive.css">
-</head>
-<body class="student-page">
-  <header class="student-mobile-header">
-    <a class="student-logo" href="../../index.html"><span class="student-logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path><path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path></svg></span><span>UniApply<span class="student-logo-dot">.</span>SA</span></a>
-    <button class="student-menu-button" type="button" aria-label="Open navigation" data-mobile-menu><svg viewBox="0 0 24 24"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg></button>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your profile | UniApply SA</title>
+    <link rel="stylesheet" href="../../css/variables.css" />
+    <link rel="stylesheet" href="../../css/reset.css" />
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/layouts.css" />
+    <link rel="stylesheet" href="../../css/components.css" />
+    <link rel="stylesheet" href="../../css/student.css" />
+    <link rel="stylesheet" href="../../css/responsive.css" />
+  </head>
+  <body class="student-page">
+    <header class="student-mobile-header">
+      <a class="student-logo" href="../../index.html"
+        ><span class="student-logo-mark" aria-hidden="true"
+          ><svg viewBox="0 0 24 24">
+            <path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path>
+            <path
+              d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"
+            ></path></svg></span
+        ><span>UniApply<span class="student-logo-dot">.</span>SA</span></a
+      >
+      <button
+        class="student-menu-button"
+        type="button"
+        aria-label="Open navigation"
+        data-mobile-menu
+      >
+        <svg viewBox="0 0 24 24">
+          <path d="M4 7h16"></path>
+          <path d="M4 12h16"></path>
+          <path d="M4 17h16"></path>
+        </svg>
+      </button>
+    </header>
 
-  <div class="student-shell">
-    <aside class="student-sidebar" aria-label="Student navigation">
-      <a class="student-logo" href="../../index.html"><span class="student-logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path><path d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"></path></svg></span><span>UniApply<span class="student-logo-dot">.</span>SA</span></a>
-      <nav class="student-nav" aria-label="Primary">
-        <a class="student-nav-link" href="dashboard.html"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"></rect><rect x="14" y="4" width="6" height="6" rx="1"></rect><rect x="4" y="14" width="6" height="6" rx="1"></rect><rect x="14" y="14" width="6" height="6" rx="1"></rect></svg>Dashboard</a>
-        <a class="student-nav-link" href="universities.html"><svg viewBox="0 0 24 24"><path d="M4 20h16"></path><path d="M6 20V9h5v11"></path><path d="M13 20V5h5v15"></path></svg>Universities</a>
-        <a class="student-nav-link" href="applications.html"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="1.5"></rect><path d="M9 10h6"></path><path d="M9 14h4"></path></svg>Applications</a>
-        <a class="student-nav-link" href="documents.html"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l3 3V20H7V3.5Z"></path><path d="M14 3.5V7h3.5"></path></svg>Documents</a>
-        <a class="student-nav-link" href="explore.html"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l3 3V20H7V3.5Z"></path><path d="M14 3.5V7h3.5"></path></svg>Explore</a>
-        <a class="student-nav-link is-active" href="profile.html" aria-current="page"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.25"></circle><path d="M5.75 20c.6-3.25 2.7-5 6.25-5s5.65 1.75 6.25 5"></path></svg>Profile</a>
-        <a class="student-nav-link" href="results.html"><svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0-9-9"></path><path d="M12 12 17 7"></path></svg>APS Calculator</a>
-      </nav>
-      <button class="student-button student-signout" type="button" data-sign-out>Sign out</button>
-    </aside>
+    <div class="student-shell">
+      <aside class="student-sidebar" aria-label="Student navigation">
+        <a class="student-logo" href="../../index.html"
+          ><span class="student-logo-mark" aria-hidden="true"
+            ><svg viewBox="0 0 24 24">
+              <path d="M3 8.25 12 4l9 4.25-9 4.25L3 8.25Z"></path>
+              <path
+                d="M6.75 10.5v4.75c1.6 1.45 3.35 2.15 5.25 2.15s3.65-.7 5.25-2.15V10.5"
+              ></path></svg></span
+          ><span>UniApply<span class="student-logo-dot">.</span>SA</span></a
+        >
+        <nav class="student-nav" aria-label="Primary">
+          <a class="student-nav-link" href="dashboard.html"
+            ><svg viewBox="0 0 24 24">
+              <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+              <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+              <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+              <rect x="14" y="14" width="6" height="6" rx="1"></rect></svg
+            >Dashboard</a
+          >
+          <a class="student-nav-link" href="universities.html"
+            ><svg viewBox="0 0 24 24">
+              <path d="M4 20h16"></path>
+              <path d="M6 20V9h5v11"></path>
+              <path d="M13 20V5h5v15"></path></svg
+            >Universities</a
+          >
+          <a class="student-nav-link" href="applications.html"
+            ><svg viewBox="0 0 24 24">
+              <rect x="6" y="4" width="12" height="16" rx="1.5"></rect>
+              <path d="M9 10h6"></path>
+              <path d="M9 14h4"></path></svg
+            >Applications</a
+          >
+          <a class="student-nav-link" href="documents.html"
+            ><svg viewBox="0 0 24 24">
+              <path d="M7 3.5h7l3 3V20H7V3.5Z"></path>
+              <path d="M14 3.5V7h3.5"></path></svg
+            >Documents</a
+          >
+          <a class="student-nav-link" href="explore.html"
+            ><svg viewBox="0 0 24 24">
+              <path d="M7 3.5h7l3 3V20H7V3.5Z"></path>
+              <path d="M14 3.5V7h3.5"></path></svg
+            >Explore</a
+          >
+          <a
+            class="student-nav-link is-active"
+            href="profile.html"
+            aria-current="page"
+            ><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="3.25"></circle>
+              <path
+                d="M5.75 20c.6-3.25 2.7-5 6.25-5s5.65 1.75 6.25 5"
+              ></path></svg
+            >Profile</a
+          >
+          <a class="student-nav-link" href="results.html"
+            ><svg viewBox="0 0 24 24">
+              <path d="M12 21a9 9 0 1 0-9-9"></path>
+              <path d="M12 12 17 7"></path></svg
+            >APS Calculator</a
+          >
+        </nav>
+        <button
+          class="student-button student-signout"
+          type="button"
+          data-sign-out
+        >
+          Sign out
+        </button>
+      </aside>
 
-    <main class="student-main" aria-labelledby="profile-title">
-      <header class="student-page-header">
-        <div>
-          <h1 id="profile-title">Your profile</h1>
-          <p class="student-subtitle">Capture your details once and reuse them across applications.</p>
-        </div>
-      </header>
-
-      <form class="student-section-stack" data-profile-form>
-        <div class="student-tabs" aria-label="Profile sections">
-          <button type="button" class="student-tab" data-target="personal">Personal</button>
-          <button type="button" class="student-tab" data-target="address">Address</button>
-          <button type="button" class="student-tab" data-target="academic">Academic</button>
-          <button type="button" class="student-tab" data-target="contacts">Contacts</button>
-          <button type="button" class="student-tab" data-target="financial">Financial</button>
-        </div>
-
-        <section id="personal" class="student-card student-card-body" aria-labelledby="personal-title">
-          <h2 id="personal-title" class="student-panel-title">Personal</h2>
-          <div class="student-form-grid">
-            <div class="student-field"><label for="full-name">Full name</label><input id="full-name" name="full_name" type="text" autocomplete="name"></div>
-            <div class="student-field"><label for="profile-email">Email</label><input id="profile-email" name="email" type="email" autocomplete="email"></div>
-            <div class="student-field"><label for="id-number">SA ID number</label><input id="id-number" name="id_number" type="text"></div>
-            <div class="student-field"><label for="passport-number">Passport number</label><input id="passport-number" name="passport_number" type="text"></div>
-            <div class="student-field"><label for="citizenship">Citizenship</label><input id="citizenship" name="citizenship" type="text" placeholder="South African"></div>
-            <div class="student-field"><label for="date-of-birth">Date of birth</label><input id="date-of-birth" name="date_of_birth" type="date"></div>
-            <div class="student-field"><label for="gender">Gender</label><select id="gender" name="gender"><option value="">Select...</option><option value="female">Female</option><option value="male">Male</option><option value="non_binary">Non-binary</option><option value="prefer_not">Prefer not to say</option></select></div>
-            <div class="student-field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" placeholder="+27 ..."></div>
+      <main class="student-main" aria-labelledby="profile-title">
+        <header class="student-page-header">
+          <div>
+            <h1 id="profile-title">Your profile</h1>
+            <p class="student-subtitle">
+              Capture your details once and reuse them across applications.
+            </p>
           </div>
-        </section>
+        </header>
 
-        <section id="address" class="student-card student-card-body" aria-labelledby="address-title">
-          <h2 id="address-title" class="student-panel-title">Address</h2>
-          <div class="student-form-grid">
-            <div class="student-field student-form-span"><label for="address-line-1">Address line 1</label><input id="address-line-1" name="address_line1" type="text"></div>
-            <div class="student-field student-form-span"><label for="address-line-2">Address line 2</label><input id="address-line-2" name="address_line2" type="text"></div>
-            <div class="student-field"><label for="city">City</label><input id="city" name="city" type="text"></div>
-            <div class="student-field"><label for="province">Province</label><select id="province" name="province"><option value="">Select...</option><option>Eastern Cape</option><option>Free State</option><option>Gauteng</option><option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option><option>Northern Cape</option><option>North West</option><option>Western Cape</option></select></div>
-            <div class="student-field"><label for="postal-code">Postal code</label><input id="postal-code" name="postal_code" type="text"></div>
+        <form class="student-section-stack" data-profile-form>
+          <div class="student-tabs" aria-label="Profile sections">
+            <button type="button" class="student-tab" data-target="personal">
+              Personal
+            </button>
+            <button type="button" class="student-tab" data-target="address">
+              Address
+            </button>
+            <button type="button" class="student-tab" data-target="academic">
+              Academic
+            </button>
+            <button type="button" class="student-tab" data-target="contacts">
+              Contacts
+            </button>
+            <button type="button" class="student-tab" data-target="financial">
+              Financial
+            </button>
           </div>
-        </section>
 
-        <section id="academic" class="student-card student-card-body" aria-labelledby="academic-title">
-          <h2 id="academic-title" class="student-panel-title">Academic</h2>
-          <div class="student-form-grid">
-            <div class="student-field"><label for="high-school">High school</label><input id="high-school" name="high_school" type="text"></div>
-            <div class="student-field"><label for="matric-year">Matric year</label><input id="matric-year" name="matric_year" type="number"></div>
-          </div>
-          <div class="student-section-stack">
-            <div class="student-panel-header">
-              <h3 class="student-panel-title">Matric subjects and marks</h3>
-              <button class="student-button" type="button" data-add-profile-subject>Add subject</button>
+          <section
+            id="personal"
+            class="student-card student-card-body"
+            aria-labelledby="personal-title"
+          >
+            <h2 id="personal-title" class="student-panel-title">Personal</h2>
+            <div class="student-form-grid">
+              <div class="student-field">
+                <label for="first-name">First Name</label
+                ><input
+                  id="first-name"
+                  name="first_name"
+                  type="text"
+                  autocomplete="given-name"
+                />
+              </div>
+              <div class="student-field">
+                <label for="middle-name">Middle Name</label
+                ><input
+                  id="middle-name"
+                  name="middle_name"
+                  type="text"
+                  autocomplete="additional-name"
+                />
+              </div>
+              <div class="student-field">
+                <label for="last-name">Last Name</label
+                ><input
+                  id="last-name"
+                  name="last_name"
+                  type="text"
+                  autocomplete="family-name"
+                />
+              </div>
+              <div class="student-field">
+                <label for="profile-email">Email</label
+                ><input
+                  id="profile-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                />
+              </div>
+              <div class="student-field">
+                <label for="id-number">SA ID number</label
+                ><input id="id-number" name="id_number" type="text" />
+              </div>
+              <div class="student-field">
+                <label for="passport-number">Passport number</label
+                ><input
+                  id="passport-number"
+                  name="passport_number"
+                  type="text"
+                />
+              </div>
+              <div class="student-field">
+                <label for="citizenship">Citizenship</label
+                ><input
+                  id="citizenship"
+                  name="citizenship"
+                  type="text"
+                  placeholder="South African"
+                />
+              </div>
+              <div class="student-field">
+                <label for="date-of-birth">Date of birth</label
+                ><input id="date-of-birth" name="date_of_birth" type="date" />
+              </div>
+              <div class="student-field">
+                <label for="gender">Gender</label
+                ><select id="gender" name="gender">
+                  <option value="">Select...</option>
+                  <option value="FEMALE">Female</option>
+                  <option value="MALE">Male</option>
+                  <option value="OTHER">Other</option>
+                  <option value="PREFER_NOT_TO_SAY">Prefer not to say</option>
+                </select>
+              </div>
+              <div class="student-field">
+                <label for="home-language">Home language</label
+                ><input id="home-language" name="home_language" type="text" />
+              </div>
+              <div class="student-field">
+                <label for="disability-status">Disability status</label
+                ><select id="disability-status" name="disability_status">
+                  <option value="">Select...</option>
+                  <option value="false">No</option>
+                  <option value="true">Yes</option>
+                </select>
+              </div>
+              <div class="student-field">
+                <label for="phone">Phone</label
+                ><input
+                  id="phone"
+                  name="phone_number"
+                  type="tel"
+                  placeholder="+27 ..."
+                />
+              </div>
             </div>
-            <div class="student-subject-row">
-              
+          </section>
+
+          <section
+            id="address"
+            class="student-card student-card-body"
+            aria-labelledby="address-title"
+          >
+            <h2 id="address-title" class="student-panel-title">Address</h2>
+            <div class="student-form-grid">
+              <div class="student-field student-form-span">
+                <label for="address-line-1">Address line 1</label
+                ><input id="address-line-1" name="address_line1" type="text" />
+              </div>
+              <div class="student-field student-form-span">
+                <label for="address-line-2">Address line 2</label
+                ><input id="address-line-2" name="address_line2" type="text" />
+              </div>
+              <div class="student-field">
+                <label for="city">City</label
+                ><input id="city" name="city" type="text" />
+              </div>
+              <div class="student-field">
+                <label for="province">Province</label
+                ><select id="province" name="province">
+                  <option value="">Select...</option>
+                  <option>Eastern Cape</option>
+                  <option>Free State</option>
+                  <option>Gauteng</option>
+                  <option>KwaZulu-Natal</option>
+                  <option>Limpopo</option>
+                  <option>Mpumalanga</option>
+                  <option>Northern Cape</option>
+                  <option>North West</option>
+                  <option>Western Cape</option>
+                </select>
+              </div>
+              <div class="student-field">
+                <label for="postal-code">Postal code</label
+                ><input id="postal-code" name="postal_code" type="text" />
+              </div>
             </div>
-            <p class="student-detail-stat">Calculated APS: <strong data-profile-aps>0</strong></p>
+          </section>
+
+          <section
+            id="academic"
+            class="student-card student-card-body"
+            aria-labelledby="academic-title"
+          >
+            <h2 id="academic-title" class="student-panel-title">Academic</h2>
+            <div class="student-form-grid">
+              <div class="student-field">
+                <label for="high-school">High school</label
+                ><input id="high-school" name="high_school" type="text" />
+              </div>
+              <div class="student-field">
+                <label for="matric-year">Matric year</label
+                ><input id="matric-year" name="matric_year" type="number" />
+              </div>
+            </div>
+            <div class="student-section-stack">
+              <div class="student-panel-header">
+                <h3 class="student-panel-title">Matric subjects and marks</h3>
+                <button
+                  class="student-button"
+                  type="button"
+                  data-add-profile-subject
+                >
+                  Add subject
+                </button>
+              </div>
+              <div class="student-subject-row"></div>
+              <p class="student-detail-stat">
+                Calculated APS: <strong data-profile-aps>0</strong>
+              </p>
+            </div>
+          </section>
+
+          <section
+            id="contacts"
+            class="student-card student-card-body"
+            aria-labelledby="contacts-title"
+          >
+            <h2 id="contacts-title" class="student-panel-title">Contacts</h2>
+            <div class="student-form-grid">
+              <div class="student-field">
+                <label for="parent-name">Parent / guardian name</label
+                ><input id="parent-name" name="parent_name" type="text" />
+              </div>
+              <div class="student-field">
+                <label for="parent-phone">Parent / guardian phone</label
+                ><input id="parent-phone" name="parent_phone" type="tel" />
+              </div>
+              <div class="student-field">
+                <label for="parent-email">Parent / guardian email</label
+                ><input id="parent-email" name="parent_email" type="email" />
+              </div>
+              <div class="student-field">
+                <label for="emergency-name">Emergency contact name</label
+                ><input id="emergency-name" name="emergency_name" type="text" />
+              </div>
+              <div class="student-field">
+                <label for="emergency-phone">Emergency contact phone</label
+                ><input
+                  id="emergency-phone"
+                  name="emergency_phone"
+                  type="tel"
+                />
+              </div>
+            </div>
+          </section>
+
+          <section
+            id="financial"
+            class="student-card student-card-body"
+            aria-labelledby="financial-title"
+          >
+            <h2 id="financial-title" class="student-panel-title">Financial</h2>
+            <div class="student-form-grid">
+              <label class="student-detail-stat student-form-span"
+                ><input name="nsfas_applicant" type="checkbox" /> NSFAS
+                applicant</label
+              >
+              <div class="student-field">
+                <label for="household-income">Household income (annual)</label
+                ><input
+                  id="household-income"
+                  name="household_income"
+                  type="number"
+                />
+              </div>
+              <div class="student-field">
+                <label for="bursary-status">Bursary status</label
+                ><input
+                  id="bursary-status"
+                  name="bursary_status"
+                  type="text"
+                  placeholder="None / Applied / Approved"
+                />
+              </div>
+            </div>
+          </section>
+
+          <div class="student-sticky-actions">
+            <button class="student-button primary pill" type="submit">
+              Save profile
+            </button>
           </div>
-        </section>
+        </form>
+      </main>
+    </div>
 
-        <section id="contacts" class="student-card student-card-body" aria-labelledby="contacts-title">
-          <h2 id="contacts-title" class="student-panel-title">Contacts</h2>
-          <div class="student-form-grid">
-            <div class="student-field"><label for="parent-name">Parent / guardian name</label><input id="parent-name" name="parent_name" type="text"></div>
-            <div class="student-field"><label for="parent-phone">Parent / guardian phone</label><input id="parent-phone" name="parent_phone" type="tel"></div>
-            <div class="student-field"><label for="parent-email">Parent / guardian email</label><input id="parent-email" name="parent_email" type="email"></div>
-            <div class="student-field"><label for="emergency-name">Emergency contact name</label><input id="emergency-name" name="emergency_name" type="text"></div>
-            <div class="student-field"><label for="emergency-phone">Emergency contact phone</label><input id="emergency-phone" name="emergency_phone" type="tel"></div>
-          </div>
-        </section>
-
-        <section id="financial" class="student-card student-card-body" aria-labelledby="financial-title">
-          <h2 id="financial-title" class="student-panel-title">Financial</h2>
-          <div class="student-form-grid">
-            <label class="student-detail-stat student-form-span"><input name="nsfas_applicant" type="checkbox"> NSFAS applicant</label>
-            <div class="student-field"><label for="household-income">Household income (annual)</label><input id="household-income" name="household_income" type="number"></div>
-            <div class="student-field"><label for="bursary-status">Bursary status</label><input id="bursary-status" name="bursary_status" type="text" placeholder="None / Applied / Approved"></div>
-          </div>
-        </section>
-
-        <div class="student-sticky-actions">
-          <button class="student-button primary pill" type="submit">Save profile</button>
-        </div>
-      </form>
-    </main>
-  </div>
-
-  <script type="module" src="../../js/pages/profile.js"></script>
-</body>
+    <script type="module" src="../../js/pages/profile.js"></script>
+  </body>
 </html>

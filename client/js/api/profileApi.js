@@ -1,11 +1,17 @@
 /**
  * API wrapper for profile.
- * Complete request methods will be added when the feature is implemented.
  */
 import { apiRequest } from "./apiClient.js";
 
 export const profileResourcePath = "/profile";
 
-export function fetchProfilePlaceholder() {
+export function getProfile() {
   return apiRequest(profileResourcePath);
+}
+
+export function updateProfile(profile) {
+  return apiRequest(profileResourcePath, {
+    method: "PATCH",
+    body: JSON.stringify(profile),
+  });
 }

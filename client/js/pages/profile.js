@@ -5,6 +5,7 @@
 // TODO: Wire [data-add-profile-subject] and [data-remove-profile-subject] to subject row management.
 // TODO: Calculate APS from the subject rows and update [data-profile-aps].
 // TODO: Wire [data-sign-out] to the auth/session service.
+import { getProfile, updateProfile } from "../api/profileApi.js";
 import { setCurrentPage } from "../utils/dom.js";
 
 export const page = Object.freeze({
@@ -13,6 +14,115 @@ export const page = Object.freeze({
 });
 
 setCurrentPage(page.id);
+
+const profileForm = document.querySelector("[data-profile-form]");
+
+function formatDateForInput(value) {
+    if (!value) {
+        return "";
+    }
+
+    return String(value).slice(0, 10);
+}
+
+function setFormValue(form, name, value) {
+    const field = form?.elements?.[name];
+
+    if (!field || value === null || value === undefined) {
+        return;
+    }
+
+    if (field.type === "date") {
+        field.value = formatDateForInput(value);
+        return;
+    }
+
+    if (field.type === "checkbox") {
+        field.checked = Boolean(value);
+        return;
+    }
+
+    field.value = value;
+}
+
+function renderProfileForm(profile) {
+    if (!profileForm || !profile) {
+        return;
+    }
+
+    setFormValue(profileForm, "first_name", profile.first_name);
+    setFormValue(profileForm, "middle_name", profile.middle_name);
+    setFormValue(profileForm, "last_name", profile.last_name);
+    setFormValue(profileForm, "email", profile.email);
+    setFormValue(profileForm, "id_number", profile.id_number);
+    setFormValue(profileForm, "passport_number", profile.passport_number);
+    setFormValue(profileForm, "citizenship", profile.citizenship);
+    setFormValue(profileForm, "date_of_birth", profile.date_of_birth);
+    setFormValue(profileForm, "gender", profile.gender);
+    setFormValue(profileForm, "home_language", profile.home_language);
+    setFormValue(profileForm, "disability_status", profile.disability_status);
+    setFormValue(profileForm, "phone_number", profile.phone_number);
+    setFormValue(profileForm, "address_line1", profile.address_line1);
+    setFormValue(profileForm, "address_line2", profile.address_line2);
+    setFormValue(profileForm, "city", profile.city);
+    setFormValue(profileForm, "province", profile.province);
+    setFormValue(profileForm, "postal_code", profile.postal_code);
+}
+
+function getFormValue(form, name) {
+    return form.elements[name]?.value?.trim() || "";
+}
+
+function getDigitsOnlyFormValue(form, name) {
+    return getFormValue(form, name).replace(/\D/g, "");
+}
+
+function getProfilePayload(form) {
+    return {
+        first_name: getFormValue(form, "first_name"),
+        middle_name: getFormValue(form, "middle_name"),
+        last_name: getFormValue(form, "last_name"),
+        email: getFormValue(form, "email"),
+        id_number: getFormValue(form, "id_number"),
+        passport_number: getFormValue(form, "passport_number"),
+        citizenship: getFormValue(form, "citizenship"),
+        date_of_birth: getFormValue(form, "date_of_birth"),
+        gender: getFormValue(form, "gender"),
+        home_language: getFormValue(form, "home_language"),
+        disability_status: getFormValue(form, "disability_status"),
+        phone_number: getDigitsOnlyFormValue(form, "phone_number"),
+        address_line1: getFormValue(form, "address_line1"),
+        address_line2: getFormValue(form, "address_line2"),
+        city: getFormValue(form, "city"),
+        province: getFormValue(form, "province"),
+        postal_code: getFormValue(form, "postal_code"),
+    };
+}
+
+async function loadProfileForm() {
+    try {
+        const response = await getProfile();
+        renderProfileForm(response.data);
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
+    }
+}
+
+loadProfileForm();
+
+profileForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    try {
+        const response = await updateProfile(getProfilePayload(profileForm));
+        renderProfileForm(response.data);
+        alert("Profile saved successfully.");
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
+    }
+});
 
 // Navigation tabs
 const tabs = document.querySelectorAll(".student-tab");
