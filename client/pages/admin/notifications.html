@@ -1,39 +1,436 @@
-<!DOCTYPE html>
-<html lang="en-ZA">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Notifications | UniApply SA</title>
-    <link rel="stylesheet" href="../../css/variables.css">
-    <link rel="stylesheet" href="../../css/reset.css">
-    <link rel="stylesheet" href="../../css/global.css">
-    <link rel="stylesheet" href="../../css/layouts.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <link rel="stylesheet" href="../../css/admin.css">
-    <link rel="stylesheet" href="../../css/responsive.css">
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <link href="https://media.base44.com/images/public/6a36dfe07280f0fdb917656e/14e698836_logo.png" rel="icon" type="image/svg+xml">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="/manifest.json" rel="manifest">
+  <title>
+   UniApply SA
+  </title>
+
+  <script type="module">
+   if (window.self === window.top) {
+  let lastPath = "";
+  function getPageNameFromPath(path) {
+    const segments = path.split("/").filter(Boolean);
+    return segments[0] || null;
+  }
+  function trackPageView() {
+    const path = window.location.pathname;
+    if (path === lastPath) return;
+    lastPath = path;
+    const pageName = getPageNameFromPath(path) || "home";
+    const appId = "6a36dfe07280f0fdb917656e";
+    if (!appId) return;
+    fetch(`/api/app-logs/${appId}/log-user-in-app/${pageName}`, {
+      method: "POST",
+    }).catch(() => {});
+  }
+  const originalPushState = history.pushState.bind(history);
+  history.pushState = function (...args) {
+    originalPushState(...args);
+    trackPageView();
+  };
+  const originalReplaceState = history.replaceState.bind(history);
+  history.replaceState = function (...args) {
+    originalReplaceState(...args);
+    trackPageView();
+  };
+  window.addEventListener("popstate", trackPageView);
+  trackPageView();
+}
+  </script>
+ 
+  
+ <style>
+      @keyframes badge-spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .badge-spinner {
+        animation: badge-spin 1s linear infinite;
+      }
+      @keyframes base44-fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes base44-scale-in {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="admin-page">
-  <header class="site-header">
-    <div class="layout-container header-inner">
-      <a class="brand-link" href="../../index.html">UniApply SA</a>
 
-      <nav class="site-nav" aria-label="Admin navigation">
-        <a href="../../index.html">Home</a>
-        <a href="../../pages/admin/dashboard.html">Dashboard</a>
-        <a href="../../pages/admin/applications.html">Applications</a>
-        <a href="../../pages/admin/students.html">Students</a>
-      </nav>
+ <body>
+  <div id="root">
+ <div class="flex min-h-screen bg-slate-50">
+  <aside class="hidden lg:flex flex-col w-60 bg-slate-900 h-screen sticky top-0 shrink-0">
+   <div class="px-6 py-5 border-b border-slate-700/60">
+    <div class="flex items-center gap-3">
+     <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center shrink-0">
+      <svg class="lucide lucide-graduation-cap text-white" fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg">
+       <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z">
+       </path>
+       <path d="M22 10v6">
+       </path>
+       <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5">
+       </path>
+      </svg>
+     </div>
+     <div>
+      <p class="text-sm font-bold text-white">
+       UniApply SA
+      </p>
+      <p class="text-xs text-slate-400">
+       Admin Portal
+      </p>
+     </div>
     </div>
-  </header>
-
-  <main class="layout-container page-shell">
-    <section class="placeholder-section" aria-labelledby="page-title">
-      <p class="eyebrow">Admin workspace</p>
-      <h1 id="page-title">Admin Notifications</h1>
-      <p>Admin notification tools will be implemented in a later phase.</p>
-    </section>
+   </div>
+   <nav class="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/">
+     <svg class="lucide lucide-layout-dashboard shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <rect height="9" rx="1" width="7" x="3" y="3">
+      </rect>
+      <rect height="5" rx="1" width="7" x="14" y="3">
+      </rect>
+      <rect height="9" rx="1" width="7" x="14" y="12">
+      </rect>
+      <rect height="5" rx="1" width="7" x="3" y="16">
+      </rect>
+     </svg>
+     Dashboard
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/applications">
+     <svg class="lucide lucide-file-text shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z">
+      </path>
+      <path d="M14 2v4a2 2 0 0 0 2 2h4">
+      </path>
+      <path d="M10 9H8">
+      </path>
+      <path d="M16 13H8">
+      </path>
+      <path d="M16 17H8">
+      </path>
+     </svg>
+     Applications
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/students">
+     <svg class="lucide lucide-users shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2">
+      </path>
+      <circle cx="9" cy="7" r="4">
+      </circle>
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87">
+      </path>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75">
+      </path>
+     </svg>
+     Students
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/universities">
+     <svg class="lucide lucide-graduation-cap shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z">
+      </path>
+      <path d="M22 10v6">
+      </path>
+      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5">
+      </path>
+     </svg>
+     Universities
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/programmes">
+     <svg class="lucide lucide-book-open shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 7v14">
+      </path>
+      <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
+      </path>
+     </svg>
+     Programmes
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/aps-calculator">
+     <svg class="lucide lucide-calculator shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <rect height="20" rx="2" width="16" x="4" y="2">
+      </rect>
+      <line x1="8" x2="16" y1="6" y2="6">
+      </line>
+      <line x1="16" x2="16" y1="14" y2="18">
+      </line>
+      <path d="M16 10h.01">
+      </path>
+      <path d="M12 10h.01">
+      </path>
+      <path d="M8 10h.01">
+      </path>
+      <path d="M12 14h.01">
+      </path>
+      <path d="M8 14h.01">
+      </path>
+      <path d="M12 18h.01">
+      </path>
+      <path d="M8 18h.01">
+      </path>
+     </svg>
+     APS Calculator
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/payments">
+     <svg class="lucide lucide-dollar-sign shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" x2="12" y1="2" y2="22">
+      </line>
+      <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6">
+      </path>
+     </svg>
+     Payments
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/offers">
+     <svg class="lucide lucide-gift shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <rect height="4" rx="1" width="18" x="3" y="8">
+      </rect>
+      <path d="M12 8v13">
+      </path>
+      <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7">
+      </path>
+      <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5">
+      </path>
+     </svg>
+     Offers
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors bg-blue-600 text-white" href="/communication">
+     <svg class="lucide lucide-message-square shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+      </path>
+     </svg>
+     Communication
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/reports">
+     <svg class="lucide lucide-chart-no-axes-column shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <line x1="18" x2="18" y1="20" y2="10">
+      </line>
+      <line x1="12" x2="12" y1="20" y2="4">
+      </line>
+      <line x1="6" x2="6" y1="20" y2="14">
+      </line>
+     </svg>
+     Reports
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/users">
+     <svg class="lucide lucide-shield-check shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z">
+      </path>
+      <path d="m9 12 2 2 4-4">
+      </path>
+     </svg>
+     User Management
+    </a>
+    <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-300 hover:bg-slate-700/60 hover:text-white" href="/audit-logs">
+     <svg class="lucide lucide-clipboard-list shrink-0" fill="none" height="17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="17" xmlns="http://www.w3.org/2000/svg">
+      <rect height="4" rx="1" ry="1" width="8" x="8" y="2">
+      </rect>
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2">
+      </path>
+      <path d="M12 11h4">
+      </path>
+      <path d="M12 16h4">
+      </path>
+      <path d="M8 11h.01">
+      </path>
+      <path d="M8 16h.01">
+      </path>
+     </svg>
+     Audit Logs
+    </a>
+   </nav>
+  </aside>
+  <div class="lg:hidden fixed top-3 left-3 z-50">
+   <button class="p-2 bg-slate-900 text-white rounded-lg shadow-lg">
+    <svg class="lucide lucide-menu" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+     <line x1="4" x2="20" y1="12" y2="12">
+     </line>
+     <line x1="4" x2="20" y1="6" y2="6">
+     </line>
+     <line x1="4" x2="20" y1="18" y2="18">
+     </line>
+    </svg>
+   </button>
+  </div>
+  <main class="flex-1 min-w-0 overflow-x-hidden">
+   <div class="p-4 lg:p-6 space-y-5">
+    <div>
+     <h1 class="text-2xl font-bold text-foreground">
+      Communication Center
+     </h1>
+     <p class="text-sm text-muted-foreground mt-0.5">
+      Send emails and SMS to students
+     </p>
+    </div>
+    <div class="border-b border-border">
+     <div class="flex gap-1">
+      <button class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors border-blue-600 text-blue-600">
+       <svg class="lucide lucide-mail" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+        <rect height="16" rx="2" width="20" x="2" y="4">
+        </rect>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7">
+        </path>
+       </svg>
+       Compose
+      </button>
+      <button class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors border-transparent text-muted-foreground hover:text-foreground">
+       <svg class="lucide lucide-clock" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10">
+        </circle>
+        <polyline points="12 6 12 12 16 14">
+        </polyline>
+       </svg>
+       Message History
+      </button>
+      <button class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors border-transparent text-muted-foreground hover:text-foreground">
+       <svg class="lucide lucide-file-text" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z">
+        </path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4">
+        </path>
+        <path d="M10 9H8">
+        </path>
+        <path d="M16 13H8">
+        </path>
+        <path d="M16 17H8">
+        </path>
+       </svg>
+       Templates
+      </button>
+      <button class="flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors border-transparent text-muted-foreground hover:text-foreground">
+       <svg class="lucide lucide-users" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2">
+        </path>
+        <circle cx="9" cy="7" r="4">
+        </circle>
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87">
+        </path>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75">
+        </path>
+       </svg>
+       Bulk Send
+      </button>
+     </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+     <div class="lg:col-span-2 bg-white rounded-xl border border-border p-5 space-y-4">
+      <h3 class="font-semibold text-foreground">
+       New Message
+      </h3>
+      <div class="flex gap-3">
+       <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-blue-600 text-white">
+        <svg class="lucide lucide-mail" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+         <rect height="16" rx="2" width="20" x="2" y="4">
+         </rect>
+         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7">
+         </path>
+        </svg>
+        Email
+       </button>
+       <button class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors border border-border hover:bg-muted">
+        <svg class="lucide lucide-message-square" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
+         </path>
+        </svg>
+        SMS
+       </button>
+      </div>
+      <div>
+       <label class="text-xs font-medium text-muted-foreground">
+        To
+       </label>
+       <input class="w-full mt-1 px-3 py-2.5 text-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/30" placeholder="student@example.com" value=""/>
+      </div>
+      <div>
+       <label class="text-xs font-medium text-muted-foreground">
+        Subject
+       </label>
+       <input class="w-full mt-1 px-3 py-2.5 text-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/30" placeholder="Subject..." value=""/>
+      </div>
+      <div>
+       <label class="text-xs font-medium text-muted-foreground">
+        Message
+       </label>
+       <textarea class="w-full mt-1 px-3 py-2.5 text-sm border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/30 resize-none" placeholder="Type your message..." rows="8"></textarea>
+      </div>
+      <div class="flex justify-end gap-2">
+       <button class="px-4 py-2 border border-border rounded-lg text-sm hover:bg-muted transition-colors">
+        Clear
+       </button>
+       <button class="flex items-center gap-2 px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
+        <svg class="lucide lucide-send" fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+         <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z">
+         </path>
+         <path d="m21.854 2.147-10.94 10.939">
+         </path>
+        </svg>
+        Send
+       </button>
+      </div>
+     </div>
+     <div class="bg-white rounded-xl border border-border p-5">
+      <h4 class="font-semibold text-foreground mb-3">
+       Quick Templates
+      </h4>
+      <div class="space-y-2">
+       <button class="w-full text-left p-3 rounded-lg border transition-colors border-border hover:bg-muted/50">
+        <p class="text-sm font-medium text-foreground">
+         Application Received
+        </p>
+        <p class="text-xs text-muted-foreground mt-0.5 truncate">
+         Your Application Has Been Received
+        </p>
+       </button>
+       <button class="w-full text-left p-3 rounded-lg border transition-colors border-border hover:bg-muted/50">
+        <p class="text-sm font-medium text-foreground">
+         Documents Required
+        </p>
+        <p class="text-xs text-muted-foreground mt-0.5 truncate">
+         Additional Documents Required
+        </p>
+       </button>
+       <button class="w-full text-left p-3 rounded-lg border transition-colors border-border hover:bg-muted/50">
+        <p class="text-sm font-medium text-foreground">
+         Offer Sent
+        </p>
+        <p class="text-xs text-muted-foreground mt-0.5 truncate">
+         Congratulations – Offer of Admission
+        </p>
+       </button>
+       <button class="w-full text-left p-3 rounded-lg border transition-colors border-border hover:bg-muted/50">
+        <p class="text-sm font-medium text-foreground">
+         Application Rejected
+        </p>
+        <p class="text-xs text-muted-foreground mt-0.5 truncate">
+         Update on Your Application
+        </p>
+       </button>
+       <button class="w-full text-left p-3 rounded-lg border transition-colors border-border hover:bg-muted/50">
+        <p class="text-sm font-medium text-foreground">
+         Payment Received
+        </p>
+        <p class="text-xs text-muted-foreground mt-0.5 truncate">
+         Payment Confirmation
+        </p>
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
   </main>
+ </div>
+ <div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]">
+  <div class="fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]">
+  </div>
+ </div>
+</div> 
 
-  <script type="module" src="../../js/pages/adminNotifications.js"></script>
-</body>
-</html>
+<span id="recharts_measurement_span" aria-hidden="true" style="position: absolute; top: -20000px; left: 0px; padding: 0px; margin: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; white-space: pre; font-size: 11px; letter-spacing: normal;">1</span></body></html>
