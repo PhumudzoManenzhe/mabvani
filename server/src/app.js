@@ -25,28 +25,38 @@ const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 
+// Hardcoded safe origins combined with your environment variable origins
+const allowedOrigins = [
+  "http://127.0.0.1:5500", // Browser Live Server default
+  "http://localhost:5500", // Alternate local address
+  "https://project-lzhx2.vercel.app", // Your Vercel frontend production build
+];
+
+// If you have extra URLs configured in your Render environment variables, add them dynamically
+if (env.clientUrls && Array.isArray(env.clientUrls)) {
+  allowedOrigins.push(...env.clientUrls);
+}
+
 const corsOptions = {
   origin(origin, callback) {
-    if (!origin || env.clientUrls.includes(origin) || !env.isProduction) {
+    // 1. Allow internal server-to-server calls or tool testing like Postman (where origin is undefined)
+    // 2. Allow anything if explicitly running in a non-production test phase
+    // 3. Match against our consolidated allowed origins list
+    if (!origin || !env.isProduction || allowedOrigins.includes(origin)) {
       callback(null, true);
       return;
     }
 
-    callback(new Error("This origin is not allowed by CORS."));
+    callback(new Error(`Origin ${origin} is not allowed by CORS structure.`));
   },
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"], // Explicitly greenlight your client's custom API request headers
 };
 
 app.use(helmet());
-app.use(cors(corsOptions));
-//const cors = require("cors");
+app.use(cors(corsOptions)); // This application layer setup now safely covers all avenues
 
-/*app.use(
-  cors({
-    origin: ["http://localhost:5500", "https://project-lzhx2.vercel.app"],
-    credentials: true,
-  }),
-);*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(rateLimiter);
