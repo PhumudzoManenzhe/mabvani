@@ -38,15 +38,15 @@ const corsOptions = {
 };
 
 app.use(helmet());
-//app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 //const cors = require("cors");
 
-app.use(
+/*app.use(
   cors({
     origin: ["http://localhost:5500", "https://project-lzhx2.vercel.app"],
     credentials: true,
   }),
-);
+);*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(rateLimiter);
