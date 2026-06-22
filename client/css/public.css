@@ -437,6 +437,10 @@
   font-weight: 700;
 }
 
+.required-marker {
+  color: var(--color-error);
+}
+
 /* Form controls: sets touch-friendly height and neutral borders. */
 .form-field input,
 .form-field select,
@@ -448,6 +452,52 @@
   background: var(--template-card);
   color: var(--foreground);
   padding: 0.65rem 0.8rem;
+}
+
+.password-control {
+  position: relative;
+}
+
+.password-control input {
+  padding-right: 3rem;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.45rem;
+  display: inline-grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--template-muted);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.password-toggle:hover,
+.password-toggle:focus-visible {
+  color: var(--foreground);
+}
+
+.password-toggle:focus-visible {
+  outline: 3px solid rgb(11 47 87 / 0.16);
+}
+
+.password-toggle svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
 }
 
 /* Form control focus: keeps keyboard focus visible. */

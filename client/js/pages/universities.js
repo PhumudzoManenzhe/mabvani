@@ -1,6 +1,7 @@
 import { createUniversityCard } from "../components/universityCard.js";
 import { filterUniversities, getProvinces } from "../data/universities.js";
 import { queryRequired, setCurrentPage } from "../utils/dom.js";
+import { initializeStudentAuth } from "../auth/authUi.js";
 
 export const page = Object.freeze({
   id: "universities",
@@ -8,6 +9,7 @@ export const page = Object.freeze({
 });
 
 setCurrentPage(page.id);
+await initializeStudentAuth();
 
 const form = queryRequired("[data-university-filter-form]");
 const list = queryRequired("[data-university-list]");
@@ -100,4 +102,3 @@ form.addEventListener("submit", (event) => {
   event.preventDefault(); // Stops the Enter key from refreshing the page
 });
 
-// TODO: Wire [data-sign-out] to the auth/session service.

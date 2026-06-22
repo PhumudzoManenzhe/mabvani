@@ -3,6 +3,7 @@
  * Page behaviour will be added during feature implementation.
  */
 import { setCurrentPage } from "../utils/dom.js";
+import { initializeStudentAuth } from "../auth/authUi.js";
 
 export const page = Object.freeze({
   id: "cart",
@@ -10,3 +11,4 @@ export const page = Object.freeze({
 });
 
 setCurrentPage(page.id);
+await initializeStudentAuth();

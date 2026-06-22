@@ -3,11 +3,16 @@
  */
 import { supabase } from "./supabaseClient.js";
 
+const studentDashboardPath = "../../pages/student/dashboard.html";
+const studentProfilePath = "../../pages/student/profile.html";
+
 const assertSupabaseConfigured = () => {
   if (!supabase) {
     throw new Error("Supabase frontend configuration is missing.");
   }
 };
+
+const getRedirectUrl = (path) => new URL(path, window.location.href).href;
 
 export async function registerWithEmail(user) {
   assertSupabaseConfigured();
@@ -41,7 +46,18 @@ export async function loginWithGoogle() {
   return supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: window.location.origin,
+      redirectTo: getRedirectUrl(studentDashboardPath),
+    },
+  });
+}
+
+export async function registerWithGoogle() {
+  assertSupabaseConfigured();
+
+  return supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: getRedirectUrl(studentProfilePath),
     },
   });
 }

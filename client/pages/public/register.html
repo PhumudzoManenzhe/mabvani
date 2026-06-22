@@ -51,12 +51,15 @@
 
         <form class="auth-form" data-register-form>
           <div class="form-field">
-            <label for="register-first-name">First Name</label>
+            <label for="register-first-name"
+              >First Name <span class="required-marker" aria-hidden="true">*</span></label
+            >
             <input
               id="register-first-name"
               name="first_name"
               type="text"
               autocomplete="name"
+              required
             />
           </div>
 
@@ -71,43 +74,85 @@
           </div>
 
           <div class="form-field">
-            <label for="register-last-name">Last Name</label>
+            <label for="register-last-name"
+              >Last Name <span class="required-marker" aria-hidden="true">*</span></label
+            >
             <input
               id="register-last-name"
               name="last_name"
               type="text"
               autocomplete="name"
+              required
             />
           </div>
 
           <div class="form-field">
-            <label for="register-email">Email</label>
+            <label for="register-email"
+              >Email <span class="required-marker" aria-hidden="true">*</span></label
+            >
             <input
               id="register-email"
               name="email"
               type="email"
               autocomplete="email"
+              required
             />
           </div>
 
           <div class="form-field">
-            <label for="register-password">Password</label>
-            <input
-              id="register-password"
-              name="password"
-              type="password"
-              autocomplete="new-password"
-            />
+            <label for="register-password"
+              >Password <span class="required-marker" aria-hidden="true">*</span></label
+            >
+            <div class="password-control">
+              <input
+                id="register-password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                required
+              />
+              <button
+                class="password-toggle"
+                type="button"
+                data-password-toggle
+                aria-controls="register-password"
+                aria-label="Show password"
+                aria-pressed="false"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
           </div>
 
           <div class="form-field">
-            <label for="register-confirm-password">Confirm Password</label>
-            <input
-              id="register-confirm-password"
-              name="confirm_password"
-              type="password"
-              autocomplete="new-password"
-            />
+            <label for="register-confirm-password"
+              >Confirm Password <span class="required-marker" aria-hidden="true">*</span></label
+            >
+            <div class="password-control">
+              <input
+                id="register-confirm-password"
+                name="confirm_password"
+                type="password"
+                autocomplete="new-password"
+                required
+              />
+              <button
+                class="password-toggle"
+                type="button"
+                data-password-toggle
+                aria-controls="register-confirm-password"
+                aria-label="Show password"
+                aria-pressed="false"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
           </div>
 
           <button class="button button-primary" type="submit">

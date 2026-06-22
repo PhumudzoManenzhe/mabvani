@@ -1,4 +1,5 @@
 import { setCurrentPage } from "../utils/dom.js";
+import { initializeStudentAuth } from "../auth/authUi.js";
 
 export const page = Object.freeze({
     id: "results",
@@ -6,6 +7,7 @@ export const page = Object.freeze({
 });
 
 setCurrentPage(page.id);
+await initializeStudentAuth();
 
 const form = document.querySelector("[data-aps-form]");
 const addButton = document.querySelector("[data-add-aps-subject]");

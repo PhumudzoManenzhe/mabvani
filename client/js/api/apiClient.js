@@ -4,6 +4,7 @@
  */
 import { getAccessTokenForApi } from "../auth/sessionManager.js";
 import { APP_CONFIG } from "../config/appConfig.js";
+import { hideLoading, showLoading } from "../utils/loadingUi.js";
 
 export async function apiRequest(path, options = {}) {
   const token = await getAccessTokenForApi();
@@ -17,23 +18,29 @@ export async function apiRequest(path, options = {}) {
     headers.set("Authorization", `Bearer ${token}`);
   }
 
-  const response = await fetch(`${APP_CONFIG.API_BASE_URL}${path}`, {
-    ...options,
-    headers,
-  });
+  showLoading("Loading your data...");
 
-  const contentType = response.headers.get("content-type") || "";
-  const payload = contentType.includes("application/json")
-    ? await response.json()
-    : null;
+  try {
+    const response = await fetch(`${APP_CONFIG.API_BASE_URL}${path}`, {
+      ...options,
+      headers,
+    });
 
-  if (response.status === 401) {
-    throw new Error("Your session has expired or is not authorised.");
+    const contentType = response.headers.get("content-type") || "";
+    const payload = contentType.includes("application/json")
+      ? await response.json()
+      : null;
+
+    if (response.status === 401) {
+      throw new Error("Your session has expired or is not authorised.");
+    }
+
+    if (!response.ok) {
+      throw new Error(payload?.message || "The API request failed.");
+    }
+
+    return payload;
+  } finally {
+    hideLoading();
   }
-
-  if (!response.ok) {
-    throw new Error(payload?.message || "The API request failed.");
-  }
-
-  return payload;
 }
