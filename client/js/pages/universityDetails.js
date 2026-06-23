@@ -34,7 +34,7 @@ function setExternalLink(selector, url, text) {
 
 function createDetailMedia(university) {
   const media = queryRequired("[data-university-media]");
-  const imageUrl = getUniversityImageUrl(university, 1) || getUniversityImageUrl(university);
+  const imageUrl = getUniversityImageUrl(university);
   media.replaceChildren();
 
   if (!imageUrl) {

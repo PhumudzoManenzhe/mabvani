@@ -1,4 +1,4 @@
-const IMAGE_BASE_PATH = "../../assets/images";
+const IMAGE_BASE_PATH = "../../assets/images/first";
 
 export const FACULTY_DEADLINE_NOTES = Object.freeze([
   "Clinical and health sciences programmes often close one to three months before the standard undergraduate date.",
@@ -29,7 +29,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "Mid-May",
       route: "Direct university application",
     },
-    images: ["cput_image_1.JPG", "cput_image_2.JPG", "cput_image_3.JPG"],
+    images: ["cput1.PNG"],
   },
   {
     id: "cut",
@@ -53,7 +53,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "Mid-May",
       route: "Direct university application",
     },
-    images: ["cut_image_1.PNG", "cut_image_2.JPG", "cut_image_3.JPG"],
+    images: ["cut1.PNG"],
   },
   {
     id: "dut",
@@ -77,7 +77,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Central Applications Office (CAO)",
     },
-    images: ["dut_image_1.WEBP", "dut_image_2.JPG"],
+    images: ["dut1.PNG"],
   },
   {
     id: "mut",
@@ -101,7 +101,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Central Applications Office (CAO)",
     },
-    images: ["mut_image_1.JPG", "mut_image_2.JPG"],
+    images: ["mut1.PNG",],
   },
   {
     id: "nmu",
@@ -125,7 +125,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["nmu_image_1.JPG", "nmu_image_2.JPG"],
+    images: ["nmu1.PNG"],
   },
   {
     id: "nwu",
@@ -149,7 +149,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["nwu_image_1.JPG", "nwu_image_2.JPG"],
+    images: ["nwu1.JPG"],
   },
   {
     id: "rhodes",
@@ -173,7 +173,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "May",
       route: "Direct university application",
     },
-    images: ["rhodes_image_1.WEBP", "rhodes_image_2.PNG"],
+    images: ["rhodes1.PNG"],
   },
   {
     id: "smu",
@@ -197,7 +197,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["smu_image_1.JPG", "smu_image_2.JPG", "smu_image_3.JPG"],
+    images: ["smu1.PNG"],
   },
   {
     id: "spu",
@@ -221,7 +221,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["spu_image_1.JPG", "spu_image_2.JPG"],
+    images: ["spu1.JPG"],
   },
   {
     id: "su",
@@ -245,7 +245,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["su_image_1.WEBP", "su_image_2.PNG"],
+    images: ["su1.PNG"],
   },
   {
     id: "tut",
@@ -269,7 +269,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["tut_image_1.JPG", "tut_image_2.PNG"],
+    images: ["tut1.PNG"],
   },
   {
     id: "uct",
@@ -293,7 +293,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["uct_image_1.JPG", "uct_image_2.JPG"],
+    images: ["uct1.JPG"],
   },
   {
     id: "ufh",
@@ -317,7 +317,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "June",
       route: "Direct university application",
     },
-    images: ["ufh_image_1.WEBP", "ufh_image_2.JPG"],
+    images: ["ufh1.JPG"],
   },
   {
     id: "uj",
@@ -341,7 +341,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["uj_image_1.JPG", "uj_image_2.JPG"],
+    images: ["uj1.JPG"],
   },
   {
     id: "ukzn",
@@ -365,7 +365,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "March",
       route: "Central Applications Office (CAO)",
     },
-    images: ["ukzn_image_1.JPG", "ukzn_image_2.JPG"],
+    images: ["ukzn1.PNG"],
   },
   {
     id: "ul",
@@ -389,7 +389,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["ul_image_1.JPG", "ul_image_2.WEBP"],
+    images: ["ul1.JPG"],
   },
   {
     id: "ump",
@@ -413,7 +413,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "June",
       route: "Direct university application",
     },
-    images: ["um_image_1.JPG", "um_image_2.PNG"],
+    images: ["um1.PNG"],
   },
   {
     id: "up",
@@ -437,7 +437,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["up_image_1.JPG", "up_image_2.JPG"],
+    images: ["up1.JPG"],
   },
   {
     id: "unisa",
@@ -461,7 +461,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "August",
       route: "Direct university application",
     },
-    images: ["unisa_image_1.JPG", "unisa_image_2.JPG"],
+    images: ["unisa1.PNG"],
   },
   {
     id: "ufs",
@@ -485,7 +485,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["ufs_image_1.JPG", "ufs_image_2.JPG"],
+    images: ["ufs1.PNG"],
   },
   {
     id: "uwc",
@@ -509,7 +509,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: [],
+    images: ["uwc1.PNG"],
   },
   {
     id: "wits",
@@ -533,7 +533,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "March",
       route: "Direct university application",
     },
-    images: ["wits_image_1.JPG", "wits_image_2.JPG"],
+    images: ["wits1.PNG"],
   },
   {
     id: "univen",
@@ -557,7 +557,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["univen_image_1.JPG", "univen_image_2.JPG", "univen_image_3.JPG"],
+    images: ["univen1.JPG",],
   },
   {
     id: "unizulu",
@@ -581,7 +581,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Central Applications Office (CAO)",
     },
-    images: [],
+    images: ["unizulu1.PNG"],
   },
   {
     id: "vut",
@@ -605,7 +605,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "May",
       route: "Direct university application",
     },
-    images: ["val_image_1.JPG", "val_image_2.JPG"],
+    images: ["val1.JPG"],
   },
   {
     id: "wsu",
@@ -629,7 +629,7 @@ export const UNIVERSITIES = Object.freeze([
       typicalOpeningPeriod: "April",
       route: "Direct university application",
     },
-    images: ["wsu_image_1.PNG", "wsu_image_2.JPG"],
+    images: ["wsu1.PNG"],
   },
 ]);
 
