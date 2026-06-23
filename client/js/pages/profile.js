@@ -4,8 +4,8 @@
 // TODO: Implement profile section tab switching for .student-tab buttons if desired.
 // TODO: Wire [data-add-profile-subject] and [data-remove-profile-subject] to subject row management.
 // TODO: Calculate APS from the subject rows and update [data-profile-aps].
-// TODO: Wire [data-sign-out] to the auth/session service.
 import { getProfile, updateProfile } from "../api/profileApi.js";
+import { initializeStudentAuth } from "../auth/authUi.js";
 import { setCurrentPage } from "../utils/dom.js";
 
 export const page = Object.freeze({
@@ -14,6 +14,7 @@ export const page = Object.freeze({
 });
 
 setCurrentPage(page.id);
+await initializeStudentAuth();
 
 const profileForm = document.querySelector("[data-profile-form]");
 

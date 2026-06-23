@@ -1,3 +1,7 @@
+import { initializeStudentAuth } from "../auth/authUi.js";
+
+await initializeStudentAuth();
+
 // Navigation tabs
 const tabs = document.querySelectorAll(".student-tab");
 const sections = document.querySelectorAll("section");

@@ -3,7 +3,8 @@
  * Form submission is intentionally left for the registration implementation.
  */
 import { setCurrentPage } from "../utils/dom.js";
-import { registerWithEmail, loginWithGoogle } from "../auth/authService.js";
+import { hideLoading, showLoading } from "../utils/loadingUi.js";
+import { registerWithEmail, registerWithGoogle } from "../auth/authService.js";
 
 export const page = Object.freeze({
   id: "register",
@@ -14,80 +15,212 @@ setCurrentPage(page.id);
 
 const registerForm = document.querySelector("[data-register-form]");
 const googleButton = document.querySelector("[data-auth-google]");
+const submitButton = registerForm?.querySelector('[type="submit"]');
+const registerFields = {
+  first_name: registerForm?.querySelector('[name="first_name"]'),
+  middle_name: registerForm?.querySelector('[name="middle_name"]'),
+  last_name: registerForm?.querySelector('[name="last_name"]'),
+  email: registerForm?.querySelector('[name="email"]'),
+  password: registerForm?.querySelector('[name="password"]'),
+  confirm_password: registerForm?.querySelector('[name="confirm_password"]'),
+};
+const loginPath = "../../pages/public/login.html";
+const studentProfilePath = "../../pages/student/profile.html";
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const nameRegex = /^[\p{L}][\p{L}' -]*$/u;
+
+const setupPasswordToggles = () => {
+  document.querySelectorAll("[data-password-toggle]").forEach((button) => {
+    const input = document.getElementById(button.getAttribute("aria-controls"));
+
+    if (!input) {
+      return;
+    }
+
+    button.addEventListener("click", () => {
+      const isVisible = input.type === "text";
+      input.type = isVisible ? "password" : "text";
+      button.setAttribute("aria-pressed", String(!isVisible));
+      button.setAttribute(
+        "aria-label",
+        isVisible ? "Show password" : "Hide password",
+      );
+      input.focus();
+    });
+  });
+};
+
+const errorElements = Object.fromEntries(
+  Object.entries(registerFields).map(([name, field]) => {
+    if (!field) {
+      return [name, null];
+    }
+
+    const errorElement = document.createElement("p");
+    errorElement.id = `${field.id || name}-error`;
+    errorElement.className = "form-error";
+    errorElement.hidden = true;
+    errorElement.setAttribute("role", "alert");
+    errorElement.style.color = "var(--color-error)";
+    errorElement.style.fontSize = "0.85rem";
+    errorElement.style.margin = "0";
+
+    field.closest(".form-field")?.append(errorElement);
+    field.setAttribute("aria-describedby", errorElement.id);
+
+    return [name, errorElement];
+  }),
+);
+
+setupPasswordToggles();
+
+const clearErrors = () => {
+  Object.entries(errorElements).forEach(([name, errorElement]) => {
+    if (!errorElement) {
+      return;
+    }
+
+    errorElement.textContent = "";
+    errorElement.hidden = true;
+    registerFields[name]?.removeAttribute("aria-invalid");
+  });
+};
+
+const showFieldError = (name, message) => {
+  const errorElement = errorElements[name];
+
+  if (!errorElement) {
+    return;
+  }
+
+  errorElement.textContent = message;
+  errorElement.hidden = false;
+  registerFields[name]?.setAttribute("aria-invalid", "true");
+};
+
+const showApiError = (error) => {
+  const message =
+    error?.message || "Unable to create your account. Please try again.";
+  const lowerMessage = message.toLowerCase();
+
+  if (lowerMessage.includes("email")) {
+    showFieldError("email", message);
+    return;
+  }
+
+  if (lowerMessage.includes("password")) {
+    showFieldError("password", message);
+    return;
+  }
+
+  showFieldError("email", message);
+};
 
 /**
  * Email Registration
  */
 registerForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
+  clearErrors();
 
   const formData = new FormData(registerForm);
-  const first_name = formData.get("first_name");
-  const middle_name = formData.get("middle_name");
-  const last_name = formData.get("last_name");
-  const email = formData.get("email")?.trim();
-  const password = formData.get("password");
-  const confirm_password = formData.get("confirm_password");
+  const first_name = formData.get("first_name")?.trim() || "";
+  const middle_name = formData.get("middle_name")?.trim() || "";
+  const last_name = formData.get("last_name")?.trim() || "";
+  const email = formData.get("email")?.trim().toLowerCase() || "";
+  const password = formData.get("password") || "";
+  const confirm_password = formData.get("confirm_password") || "";
+  let hasError = false;
 
-  if (!first_name.trim() || !last_name.trim()) {
-    alert("Please enter your first name and last name.");
-    return;
+  if (!first_name) {
+    showFieldError("first_name", "Please enter your first name.");
+    hasError = true;
+  } else if (!nameRegex.test(first_name)) {
+    showFieldError(
+      "first_name",
+      "Use letters, spaces, hyphens, or apostrophes only.",
+    );
+    hasError = true;
   }
 
-  if (!email.trim()) {
-    alert("Please enter your email address.");
-    return;
+  if (middle_name && !nameRegex.test(middle_name)) {
+    showFieldError(
+      "middle_name",
+      "Use letters, spaces, hyphens, or apostrophes only.",
+    );
+    hasError = true;
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email");
-    return;
+  if (!last_name) {
+    showFieldError("last_name", "Please enter your last name.");
+    hasError = true;
+  } else if (!nameRegex.test(last_name)) {
+    showFieldError(
+      "last_name",
+      "Use letters, spaces, hyphens, or apostrophes only.",
+    );
+    hasError = true;
   }
 
-  if (!/[A-Z]/.test(password)) {
-    alert("password must contain at least one uppercase");
-    return;
+  if (!email) {
+    showFieldError("email", "Please enter your email address.");
+    hasError = true;
+  } else if (!emailRegex.test(email)) {
+    showFieldError("email", "Please enter a valid email address.");
+    hasError = true;
   }
 
-  if (!/[a-z]/.test(password)) {
-    alert("password must contain at least one lowercase");
-    return;
+  if (!password) {
+    showFieldError("password", "Please enter your password.");
+    hasError = true;
+  } else if (password.length < 8) {
+    showFieldError("password", "Password must be at least 8 characters.");
+    hasError = true;
+  } else if (!/[A-Z]/.test(password)) {
+    showFieldError(
+      "password",
+      "Password must contain at least one uppercase letter.",
+    );
+    hasError = true;
+  } else if (!/[a-z]/.test(password)) {
+    showFieldError(
+      "password",
+      "Password must contain at least one lowercase letter.",
+    );
+    hasError = true;
+  } else if (!/[0-9]/.test(password)) {
+    showFieldError("password", "Password must contain at least one number.");
+    hasError = true;
+  } else if (!/[!@#$%^&*]/.test(password)) {
+    showFieldError(
+      "password",
+      "Password must contain at least one special character.",
+    );
+    hasError = true;
   }
 
-  if (!/[0-9]/.test(password)) {
-    alert("password must contain at least one number");
-    return;
+  if (!confirm_password) {
+    showFieldError("confirm_password", "Please confirm your password.");
+    hasError = true;
+  } else if (password && password !== confirm_password) {
+    showFieldError("confirm_password", "Passwords must match.");
+    hasError = true;
   }
 
-  if (!/[!@#$%^&*]/.test(password)) {
-    alert("password must contain at least one special character");
-    return;
-  }
-
-  if (!confirm_password.trim() || !password.trim()) {
-    alert("Please enter password");
-    return;
-  }
-
-  if (password !== confirm_password) {
-    alert("password must match");
-    return;
-  }
-
-  if (!password || password.length < 8) {
-    alert("Password must be at least 8 characters.");
+  if (hasError) {
     return;
   }
 
   const user = {
-    first_name: first_name.trim(),
-    middle_name: middle_name?.trim() || "",
-    last_name: last_name.trim(),
-    email: email.trim(),
-    password: password,
+    first_name,
+    middle_name,
+    last_name,
+    email,
+    password,
   };
+
+  submitButton?.setAttribute("disabled", "");
+  showLoading("Creating your account...");
 
   try {
     const { data, error } = await registerWithEmail(user);
@@ -96,17 +229,14 @@ registerForm?.addEventListener("submit", async (event) => {
       throw error;
     }
 
-    console.log("Registration successful:", data);
-
-    alert(
-      "Account created successfully. Please check your email to verify your account.",
-    );
-    window.location.href = "../../pages/student/dashboard.html";
-    // TODO:
-    // window.location.href = "/pages/auth/verify-email.html";
+    alert("Account created successfully.");
+    window.location.href = data.session ? studentProfilePath : loginPath;
+    return;
   } catch (error) {
     console.error(error);
-    alert(error.message);
+    showApiError(error);
+    hideLoading();
+    submitButton?.removeAttribute("disabled");
   }
 });
 
@@ -114,20 +244,19 @@ registerForm?.addEventListener("submit", async (event) => {
  * Google OAuth Registration
  */
 googleButton?.addEventListener("click", async () => {
+  googleButton.disabled = true;
+  showLoading("Opening Google sign up...");
+
   try {
-    const { error } = await loginWithGoogle();
+    const { error } = await registerWithGoogle();
 
     if (error) {
       throw error;
     }
-
-    window.location.href = "../../pages/student/dashboard.html";
   } catch (error) {
     console.error(error);
-    alert(error.message);
+    alert(error.message || "Unable to continue with Google.");
+    hideLoading();
+    googleButton.disabled = false;
   }
 });
-// TODO: Read [data-register-form] values and call your account creation service.
-// TODO: Connect [data-auth-google] to the Google OAuth signup flow.
-// TODO: Validate full name, email, and password before sending the request.
-// TODO: Redirect new students to profile setup or the dashboard after signup.

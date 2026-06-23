@@ -4,6 +4,7 @@
  */
 import { setCurrentPage } from "../utils/dom.js";
 import { getProfile } from "../api/profileApi.js";
+import { initializeStudentAuth } from "../auth/authUi.js";
 
 export const page = Object.freeze({
   id: "studentDashboard",
@@ -11,6 +12,7 @@ export const page = Object.freeze({
 });
 
 setCurrentPage(page.id);
+await initializeStudentAuth();
 
 const profileCompletionElement = document.querySelector(
   "[data-profile-completion]"
@@ -65,4 +67,3 @@ loadStudentProfile();
 // TODO: Count uploaded documents and update [data-documents-count].
 // TODO: Load submitted/draft application totals.
 // TODO: Replace the static closing dates with live university deadline data.
-// TODO: Wire [data-sign-out] to the auth/session service.

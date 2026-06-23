@@ -5,6 +5,7 @@ import {
   getUniversityNotes,
 } from "../data/universities.js";
 import { queryRequired, setCurrentPage } from "../utils/dom.js";
+import { initializeStudentAuth } from "../auth/authUi.js";
 
 export const page = Object.freeze({
   id: "universityDetails",
@@ -12,6 +13,7 @@ export const page = Object.freeze({
 });
 
 setCurrentPage(page.id);
+await initializeStudentAuth();
 
 const DEFAULT_UNIVERSITY_SLUG = "university-of-cape-town";
 
@@ -129,4 +131,3 @@ const university = getUniversityBySlug(params.get("university") || params.get("i
 renderUniversity(university);
 
 // TODO: Wire [data-start-application] to create a draft application.
-// TODO: Wire [data-sign-out] to the auth/session service.
