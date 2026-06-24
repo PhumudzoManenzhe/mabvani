@@ -9,13 +9,15 @@ function getLoginUrl() {
 }
 
 export async function protectStudentPage() {
-  showLoading("Checking your session...");
-  const result = await requireAuthenticatedUser();
-
-  if (!result.allowed) {
-    window.location.replace(result.redirectTo || getLoginUrl());
-    return result;
-  }
+  // Temporarily disabled while the site is still under development.
+  // showLoading("Checking your session...");
+  // const result = await requireAuthenticatedUser();
+  //
+  // if (!result.allowed) {
+  //   window.location.replace(result.redirectTo || getLoginUrl());
+  //   return result;
+  // }
+  const result = { allowed: true, user: null };
 
   hideLoading();
   return result;
